@@ -1,0 +1,11 @@
+{
+  "appId": "com.titan_robotics.bettersns",
+  "appName": "Better Sns",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

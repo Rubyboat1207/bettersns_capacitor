@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/start.css">
+    <script src="../js/main.js"></script>
+    <script src="../js/start.js"></script>
+  </head>
+  <body>
+    <div class="vertLayout">
+      <img src="./assets/imgs/logo.png" class="logo"/>
+      <button class="start" id="start">Start Scouting</button>
+      <div class="vertLayout wifi_req">
+        <span>Requires Internet</span>
+        <button>Data Analysys</button>
+        <button>Upload Cached Data</button>
+        <button>Check for Updates</button>
+      </div>
+      <div class="">
+        <img src="./assets/imgs/source.png" class="icon" id="source">
+        <img src="./assets/imgs/feedback.png" class="icon" id="feedback">
+      </div>
+
+    </div>
+  </body>
+</html>

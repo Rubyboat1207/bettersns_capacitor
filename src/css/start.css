@@ -1,0 +1,26 @@
+.logo {
+    width: 100%;
+}
+
+.start {
+    margin-top: 50%;
+}
+
+.icon {
+    bottom: 3vw;
+    position: absolute;
+    width: 10vw;
+}
+
+#source {
+    left: 3vw;
+}
+
+#feedback {
+    right: 3vw;
+}
+
+.wifi_req {
+    margin-top: 15vh;
+    gap: 2vh;
+}
