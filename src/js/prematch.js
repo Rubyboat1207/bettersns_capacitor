@@ -2,7 +2,8 @@
 
 
 addEventListener("load", () => {
-    document.getElementById("red").addEventListener("click", () => {
-        document.getElementById("red").classList.add("selected")
-    })
+    document.getElementById("auton").addEventListener("click", () => {
+        window.location = "./auton.html";
+    });
 })
+

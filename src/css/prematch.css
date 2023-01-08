@@ -1,0 +1,20 @@
+.large-section {
+    margin-top: 13vh;
+}
+
+.inField>input {
+    width: 80vw;
+}
+
+.inField {
+    margin-top: 2vh;
+}
+
+.toggles {
+    margin-top: 10vh;
+    width: 80%;
+}
+
+.button {
+    margin-top: 10vh;
+}
