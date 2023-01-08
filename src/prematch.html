@@ -39,16 +39,21 @@
         <div class="inField">
           <span>Match Number</span>
           <div class="line"></div>
-          <input type="number" placeholder="ex. 3" id="matchNumber" />
+          <input type="number" placeholder="ex. 3" id="match" />
         </div>
       </div>
       <div class="vertLayout">
         <div class="horizLayout toggles">
-          <multiselect>
+          <div class="preload">
             <span>Preload</span>
             <div class="line"></div>
-          </multiselect>
-          <checkbox class="vertLayout" id="NoShow">
+            <multiselect id="preload">
+              <img src="assets/imgs/cube.svg" select-name="cube" id="cube"/>
+              <img src="assets/imgs/cone.svg" select-name="cone" id="cone"/>
+            </multiselect>
+          </div>
+
+          <checkbox class="vertLayout" id="noShow">
             <span>NoShow</span>
             <div class="line"></div>
             <div class="checkbox">
@@ -62,6 +67,7 @@
       <div class="vertLayout button">
         <button id="auton">Autonomous</button>
       </div>
+      <img src="assets/imgs/back.svg" class="back" id="back"/>
     </div>
   </body>
 </html>
