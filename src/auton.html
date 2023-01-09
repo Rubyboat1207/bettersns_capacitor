@@ -20,10 +20,8 @@
       <div id="alliance-display"><div></div></div>
       <h1>Autonomous Info</h1>
     </div>
+
     <div class="vertLayout large-section vl_left">
-      <div class="vertLayout button">
-        <button id="auton">Autonomous</button>
-      </div>
       <div class="horizLayout grids">
         <div class="side-grids grid-container">
           <div class="cone-grid">
@@ -115,17 +113,19 @@
         <div class="cube-floor"></div>
         <div class="cone-floor"></div>
       </div>
-      <div class="community">
-
-      </div>
-      <checkbox class="vertLayout Attempted" id="noShow">
+      <div class="community"></div>
+      <checkbox class="vertLayout Attempted" id="community-place">
         <span>Attempted Place</span>
         <div class="checkbox">
           <div class="line-container"><div class="line"></div></div>
           <div class="knob"></div>
         </div>
       </checkbox>
+      <div class="horizLayout button">
+        <img src="assets/imgs/unsuccessful_charge.svg" id="charge" class="charge">
+        <button id="auton">Teleop</button>
+      </div>
     </div>
-    <img src="assets/imgs/back.svg" class="back" id="back"/>
+    <img src="assets/imgs/back.svg" class="back" id="back" />
   </body>
 </html>
