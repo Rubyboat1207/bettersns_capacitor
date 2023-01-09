@@ -1,3 +1,4 @@
+
 // apolgies for anyone who has to read this, not my best work.
 // rewriting this in react would be a good idea, but I don't have the time
 
@@ -12,14 +13,17 @@ const pageconfigs = {
     "index": {
         orientation: "portrait",
     },
-    prematch: {
+    "prematch": {
         orientation: "portrait",
     },
-    "autonomous": {
+    "auton": {
         orientation: "landscape",
     },
     "teleop": {
         orientation: "landscape",
+    },
+    "postmatch": {
+        orientation: "portrait",
     },
 }
 
@@ -48,7 +52,7 @@ function select(tab) {
     const other = tab == red ? blue : red;
 
     tab.classList.add("selected");
-    if(other.classList.contains("selected")) {
+    if (other.classList.contains("selected")) {
         other.classList.remove("selected");
     }
 }
@@ -65,10 +69,10 @@ function registerTabEvents() {
 // This is for the custom checkbox element
 function registerToggleEvents() {
     let checkboxes = document.getElementsByTagName("checkbox");
-    for(let i = 0; i < checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         checkboxes[i].addEventListener("click", (element) => {
             let checkbox = element.target;
-            while(checkbox.tagName.toLowerCase() != "checkbox") {
+            while (checkbox.tagName.toLowerCase() != "checkbox") {
                 checkbox = checkbox.parentElement;
             }
 
@@ -81,42 +85,43 @@ function registerToggleEvents() {
 // it then sets which option is selected in the attribute "select-value"
 function registerMultiselectEvents() {
     let multiselects = document.getElementsByTagName("multiselect");
-    for(let i = 0; i < multiselects.length; i++) {
+    for (let i = 0; i < multiselects.length; i++) {
         multiselects[i].addEventListener("click", (element) => {
             // Finds the multiselect element in the parent tree
             let multiselect = element.target;
-            while(multiselect.tagName.toLowerCase() != "multiselect") {
+            while (multiselect.tagName.toLowerCase() != "multiselect") {
                 multiselect = multiselect.parentElement;
             }
-            
+
             // Nulls the select-value attribute if the same option is selected twice
             const old_selected = multiselect.getAttribute("select-value");
             const new_selected = element.target.getAttribute("select-name");
-            if(old_selected == new_selected) {
+            if (old_selected == new_selected) {
                 multiselect.setAttribute("select-value", "");
-            }else {
+            } else {
                 multiselect.setAttribute("select-value", new_selected);
             }
         });
     }
 }
 
+
 // Sets up the page, and should run before all other load listeners
 addEventListener("load", () => {
     // -- Alliance Selection --
-    if(document.getElementById("red") && document.getElementById("blue")) {
+    if (document.getElementById("red") && document.getElementById("blue")) {
         registerTabEvents();
-        if(window.localStorage.getItem("alliance") == "true") {
+        if (window.localStorage.getItem("alliance") == "true") {
             select(blue);
-        }else {
+        } else {
             select(red);
         }
     }
     const display = document.getElementById("alliance-display");
-    if(display) {
-        if(window.localStorage.getItem("alliance") == "true") {
+    if (display) {
+        if (window.localStorage.getItem("alliance") == "true") {
             display.classList.add("d_blue");
-        }else {
+        } else {
             display.classList.add("d_red");
         }
     }
@@ -125,3 +130,8 @@ addEventListener("load", () => {
     // -- Multiselect --
     registerMultiselectEvents();
 })
+
+function clearData() {
+    window.localStorage.clear();
+    window.location.reload();
+}

@@ -104,9 +104,19 @@ body {
   transition-timing-function: cubic-bezier(.5, .24, .5, 2);
 }
 
-.header>h1 {
+h1 {
+  font-family: regular;
+  color: white;
   padding-top: 1vh;
   font-size: 3em;
+}
+
+h2 {
+  margin: 0 0 0 0;
+  font-family: d_light;
+  color: white;
+  padding-top: 1vh;
+  font-size: 1.75em;
 }
 
 #red {

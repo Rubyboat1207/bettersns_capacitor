@@ -1,0 +1,85 @@
+.large-section {
+    margin-top: 13vh;
+}
+
+.button {
+    margin-top: 12vh;
+}
+
+.trash {
+    position: absolute;
+    bottom: 4.5vh;
+    left: 3vw;
+    cursor: pointer;
+}
+
+.back {
+    position: absolute;
+    bottom: 12.5vh;
+    left: 3vw;
+    cursor: pointer;
+}
+.range {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+.range>.line {
+    width: 120%;
+    height: 0.4vh;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.slidecontainer {
+    width: 100%;
+    height: 2.8vh;
+    background: url("../assets/imgs/rating_line.svg");
+}
+
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 88%;
+    /* This is height */
+    height: 2.8vh;
+    /* This is width*/
+    outline: none;
+    background-color: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 44px;
+    height: 36px;
+    border: none;
+    appearance: none;
+    background: url('../assets/imgs/ratingdot.svg');
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 44px;
+    height: 36px;
+    border: none;
+    background: url('../assets/imgs/ratingdot.svg');
+    cursor: pointer;
+}
+
+.range h1 {
+    font-size: 2.2em;
+}
+
+#save {
+    margin-top: 1vh;
+}

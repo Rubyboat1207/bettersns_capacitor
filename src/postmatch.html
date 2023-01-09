@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/postmatch.css" />
+
+    <script src="../js/script.js"></script>
+    <script type="module" src="../js/api.js"></script>
+    <script src="../js/postmatch.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div id="red" class="alliance"><div></div></div>
+      <div id="blue" class="alliance"><div></div></div>
+      <h1>Postgame Summary</h1>
+    </div>
+    <div class="vertLayout large-section vl_left">
+      <div class="vertLayout">
+        <h1>Review your notes!</h1>
+        <h2>Make sure everything is written correctly!</h2>
+      </div>
+      <div class="vertLayout">
+        <div class="range">
+          <h1>How well did this team do?</h1>
+          <div class="line"></div>
+          <div class="slidecontainer vertLayout">
+            <input type="range" min="1" max="5" value="2" class="slider" id="GeneralRating">
+          </div>
+        </div>
+        <div class="range">
+          <h1>How was their collaboration?</h1>
+          <div class="line"></div>
+          <div class="slidecontainer vertLayout">
+            <input type="range" min="1" max="5" value="2" class="slider" id="Teamwork">
+          </div>
+        </div>
+        <div class="range">
+          <h1>How was their defense?</h1>
+          <div class="line"></div>
+          <div class="slidecontainer vertLayout">
+            <input type="range" min="1" max="5" value="2" class="slider" id="Defense">
+          </div>
+        </div>
+        <div class="range">
+          <h1>How was their offense?</h1>
+          <div class="line"></div>
+          <div class="slidecontainer vertLayout">
+            <input type="range" min="1" max="5" value="2" class="slider" id="Offense">
+          </div>
+        </div>
+      </div>
+      <div class="vertLayout button">
+        <button id="upload">Save and Upload</button>
+        <button id="save">Save</button>
+      </div>
+      <img src="assets/imgs/trash.svg" class="trash" id="trash"/>
+      <img src="assets/imgs/back.svg" class="back" id="back"/>
+    </div>
+  </body>
+</html>

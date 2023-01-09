@@ -3,6 +3,7 @@ let floor_icons;
 
 const alliance = window.localStorage.getItem('alliance');
 let icons_location = [];
+let charged = false;
 
 function setGridLocation(loc, value) {
     if(loc.y != 2) {
@@ -19,10 +20,15 @@ function setGridLocation(loc, value) {
 
     const icon = floor_icons[loc.x];
     let child = icon.children[0];
-    icons_location[18 + loc.x].type = value;
+    let type = value;
+    if(value == undefined) {
+        type = loc.type;
+    }
+    icons_location[18 + loc.x].type = type;
+
 
     if(child == null) {
-        if(value == null) {
+        if(type == null) {
             return;
         }
         child = document.createElement("img");
@@ -32,13 +38,13 @@ function setGridLocation(loc, value) {
     child.classList.remove("cube");
     child.classList.remove("cone");
 
-    if(value == null) {
+    if(type == null) {
         child.remove();
         return;
     }
 
-    child.setAttribute("src", `assets/imgs/${value}.svg`);
-    child.classList.add(`${value}`);
+    child.setAttribute("src", `assets/imgs/${type}.svg`);
+    child.classList.add(`${type}`);
 }
 
 function registerElevatedIcons() {
@@ -99,6 +105,35 @@ function registerFloorIcons() {
         icons_location.push(loc);
     }
 }
+function saveToLocalStorage(prefix) {
+    window.localStorage.setItem(`${prefix}-location`, JSON.stringify(icons_location));
+    window.localStorage.setItem(`${prefix}-charged`, charged);
+    window.localStorage.setItem(`${prefix}-attempted_place`, document.getElementById("community-place").classList.contains("checked"));
+}
+
+function loadFromLocalStorage(prefix) {
+    console.log(prefix)
+    const loc = JSON.parse(window.localStorage.getItem(`${prefix}-location`));
+    charged = window.localStorage.getItem(`${prefix}-charged`) == "true";
+    const attempted_place = window.localStorage.getItem(`${prefix}-
+    attempted_place`) == "true";
+    if(attempted_place) {
+        document.getElementById("community-place").click();
+    }
+    
+    document.getElementById("charge").setAttribute("src", charged ? "assets/imgs/successful_charge.png" : "assets/imgs/unsuccessful_charge.svg");
+    if(loc == null) {
+        return;
+    }
+    for(let i = 0; i < loc.length; i++) {
+        if(loc.x != 2) {
+            setGridLocation(loc[i], loc[i].positive);
+        }
+        else {
+            setGridLocation(loc[i], loc[i].type);
+        }
+    }
+}
 
 addEventListener('load', function() {
     registerElevatedIcons();
@@ -110,8 +145,10 @@ addEventListener('load', function() {
         }
     }
     this.document.getElementById("charge").addEventListener("click", (e) => {
-        let charged = e.target.getAttribute("src") == "assets/imgs/successful_charge.png";
+        charged = e.target.getAttribute("src") == "assets/imgs/successful_charge.png";
         e.target.setAttribute("src", charged ? "assets/imgs/unsuccessful_charge.svg" : "assets/imgs/successful_charge.png");
+        charged = !charged;
     });
     console.log(icons_location);
+    completeCallback();
 });
