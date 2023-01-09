@@ -35,16 +35,16 @@ function formIsValid() {
         alert("Please enter a team name before continuing");
         return false;
     }
-    if (teamNumber.value == "") {
+    if (teamNumber.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a team number before continuing");
         return false;
     }
-    if (match.value == "") {
+    if (match.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a match number before continuing");
         return false;
     }
     if(window.localStorage.getItem("alliance") == null) {
-        alert("Please select an alliance before continuing");
+        alert("Please select an alliance color before continuing");
         return false;
     }
     return true;
