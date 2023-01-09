@@ -5,13 +5,14 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' *; script-src 'self'"
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/postmatch.css" />
 
     <script src="../js/script.js"></script>
-    <script type="module" src="../js/api.js"></script>
+    <script type="module" src="./js/api.js"></script>
+    <script type="module" src="./js/postmatch-integration.js"></script>
     <script src="../js/postmatch.js"></script>
   </head>
   <body>

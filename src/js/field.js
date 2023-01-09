@@ -21,7 +21,7 @@ function setGridLocation(loc, value) {
     const icon = floor_icons[loc.x];
     let child = icon.children[0];
     let type = value;
-    if(value == undefined) {
+    if(value === undefined) {
         type = loc.type;
     }
     icons_location[18 + loc.x].type = type;

@@ -3,7 +3,7 @@
 }
 
 .button {
-    margin-top: 12vh;
+    margin-top: 21vh;
 }
 
 .trash {
@@ -41,8 +41,8 @@ h1 {
 }
 
 .slidecontainer {
-    width: 100%;
-    height: 2.8vh;
+    width: 540px;
+    height: 2.4vh;
     background: url("../assets/imgs/rating_line.svg");
 }
 

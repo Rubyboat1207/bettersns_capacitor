@@ -19,7 +19,9 @@
     "@capacitor/filesystem": "^4.1.4",
     "@capacitor/ios": "^4.6.1",
     "@capacitor/splash-screen": "latest",
-    "cordova-plugin-screen-orientation": "^3.0.2"
+    "axios": "^1.2.2",
+    "cordova-plugin-screen-orientation": "^3.0.2",
+    "es6-promise-plugin": "^4.2.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.1",

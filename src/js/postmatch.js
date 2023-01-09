@@ -25,14 +25,6 @@ addEventListener('load', function () {
         saveToLocalStorage("postmatch")
         goPage("teleop");
     });
-    document.getElementById("upload").addEventListener("click", () => {
-        saveToLocalStorage("postmatch")
-        uploadData();
-    });
 
-    document.getElementById("save").addEventListener("click", () => {
-        saveToLocalStorage("postmatch")
-        writeDataToFile();
-    });
     loadFromLocalStorage();
 });
