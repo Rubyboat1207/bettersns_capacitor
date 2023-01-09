@@ -12,3 +12,8 @@
     width: calc(9vw / 2);
     height: 7vh;
 }
+
+.checked>.checkbox>.knob {
+    background-color: white;
+    margin-left: 4.5vw;
+}
