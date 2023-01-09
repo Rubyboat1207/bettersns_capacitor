@@ -46,3 +46,46 @@ span {
     left: 3vw;
     cursor: pointer;
 }
+
+
+
+
+.slidecontainer {
+    width: 100%; 
+  }
+  
+  
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 30%; /* This is height */
+    height: 25px; /* This is width*/
+    transform: rotate(90deg);
+    background: #d3d3d3; 
+    outline: none; 
+    opacity: 0.3; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+  }
+  
+  
+  .slider:hover {
+    opacity: 1; 
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: url('sliderdot.png');
+    cursor: pointer; 
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    background: url('sliderdot.png');
+    cursor: pointer; /* Cursor on hover */
+  }
