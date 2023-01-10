@@ -18,6 +18,7 @@
     "@capacitor/core": "^4.6.1",
     "@capacitor/filesystem": "^4.1.4",
     "@capacitor/ios": "^4.6.1",
+    "@capacitor/network": "^4.1.0",
     "@capacitor/splash-screen": "latest",
     "axios": "^1.2.2",
     "cordova-plugin-screen-orientation": "^3.0.2",

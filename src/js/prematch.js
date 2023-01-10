@@ -30,15 +30,12 @@ addEventListener("load", () => {
         goPage("index");
     });
     loadFromLocalStorage();
+    window.screen.orientation.lock("portrait");
 });
 
 function formIsValid() {
     if (scouter.value == "") {
         alert("Please enter your name before continuing");
-        return false;
-    }
-    if (team.value == "") {
-        alert("Please enter a team name before continuing");
         return false;
     }
     if (teamNumber.value == "" || !isNaN(teamNumber)) {
