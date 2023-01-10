@@ -1,3 +1,8 @@
+import dcone from "../assets/imgs/cone.svg";
+import dcube from "../assets/imgs/cube.svg";
+import battery from "../assets/imgs/unsuccessful_charge.svg";
+import battery_charged from "../assets/imgs/successful_charge.png";
+
 const icons = document.getElementsByClassName("icon");
 let floor_icons;
 
@@ -43,7 +48,7 @@ function setGridLocation(loc, value) {
         return;
     }
 
-    child.setAttribute("src", `assets/imgs/${type}.svg`);
+    child.setAttribute("src", type == "cube" ? dcube : dcone);
     child.classList.add(`${type}`);
 }
 
@@ -105,13 +110,14 @@ function registerFloorIcons() {
         icons_location.push(loc);
     }
 }
-function saveToLocalStorage(prefix) {
+
+export function saveToLocalStorage(prefix) {
     window.localStorage.setItem(`${prefix}-location`, JSON.stringify(icons_location));
     window.localStorage.setItem(`${prefix}-charged`, charged);
     window.localStorage.setItem(`${prefix}-attempted_place`, document.getElementById("community-place").classList.contains("checked"));
 }
 
-function loadFromLocalStorage(prefix) {
+export function loadFromLocalStorage(prefix) {
     console.log(prefix)
     const loc = JSON.parse(window.localStorage.getItem(`${prefix}-location`));
     charged = window.localStorage.getItem(`${prefix}-charged`) == "true";
@@ -121,7 +127,7 @@ function loadFromLocalStorage(prefix) {
         document.getElementById("community-place").click();
     }
     
-    document.getElementById("charge").setAttribute("src", charged ? "assets/imgs/successful_charge.png" : "assets/imgs/unsuccessful_charge.svg");
+    document.getElementById("charge").setAttribute("src", charged ? battery_charged : battery);
     if(loc == null) {
         return;
     }
@@ -135,6 +141,12 @@ function loadFromLocalStorage(prefix) {
     }
 }
 
+let completeCallback = () => {};
+
+export function setCallback(callback) {
+    completeCallback = callback;
+}
+
 addEventListener('load', function() {
     registerElevatedIcons();
     registerFloorIcons();
@@ -145,8 +157,8 @@ addEventListener('load', function() {
         }
     }
     this.document.getElementById("charge").addEventListener("click", (e) => {
-        charged = e.target.getAttribute("src") == "assets/imgs/successful_charge.png";
-        e.target.setAttribute("src", charged ? "assets/imgs/unsuccessful_charge.svg" : "assets/imgs/successful_charge.png");
+        charged = e.target.getAttribute("src") == battery_charged;
+        e.target.setAttribute("src", charged ? battery : battery_charged);
         charged = !charged;
     });
     console.log(icons_location);

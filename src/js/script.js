@@ -28,7 +28,7 @@ const pageconfigs = {
 }
 
 // This is a generic function for going to a page, and locking the screen orientation accordingly
-function goPage(page) {
+export function goPage(page) {
     window.location = `./${page}.html`;
     window.screen.orientation.lock(pageconfigs[page].orientation);
 }
@@ -37,12 +37,12 @@ function goPage(page) {
 
 // These two functions are a wrapper for the generic select function
 // So that you can include it in the HTML, instead of having to write a listener
-function selectRed() {
+export function selectRed() {
     select(red);
     window.localStorage.setItem("alliance", false);
 }
 
-function selectBlue() {
+export function selectBlue() {
     select(blue);
     window.localStorage.setItem("alliance", true);
 }
@@ -58,7 +58,7 @@ function select(tab) {
 }
 
 // lets you select alliances
-function registerTabEvents() {
+export function registerTabEvents() {
     red = document.getElementById("red");
     blue = document.getElementById("blue");
 
@@ -131,7 +131,7 @@ addEventListener("load", () => {
     registerMultiselectEvents();
 })
 
-function clearData() {
+export function clearData() {
     window.localStorage.clear();
     window.location.reload();
 }

@@ -1,3 +1,6 @@
+import { goPage } from "./script";
+import { clearData } from "./script"
+
 function saveToLocalStorage() {
     //window.localStorage.setItem("notes", document.getElementById("notes").value);
     window.localStorage.setItem("GeneralRating", document.getElementById("GeneralRating").value);

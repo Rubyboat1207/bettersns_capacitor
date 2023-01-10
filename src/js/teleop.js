@@ -1,3 +1,6 @@
+import { goPage } from "./script.js"
+import { saveToLocalStorage, loadFromLocalStorage, setCallback } from "./field.js"
+
 addEventListener('load', function () {
     document.getElementById("back").addEventListener("click", () => {
         saveToLocalStorage("teleop")
@@ -7,7 +10,7 @@ addEventListener('load', function () {
         saveToLocalStorage("teleop")
         goPage("postmatch");
     });
-    completeCallback = () => {
+    setCallback(() => {
         loadFromLocalStorage("teleop");
-    }
+    })
 });

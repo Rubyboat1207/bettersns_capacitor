@@ -1,3 +1,9 @@
+import { goPage } from "./script";
+import dcone from '../assets/imgs/cone.svg';
+import dcone_selected from '../assets/imgs/cone_selected.svg';
+import dcube from '../assets/imgs/cube.svg';
+import dcube_selected from '../assets/imgs/cube_selected.svg';
+
 let scouter, team, teamNumber, match, preload, noShow, cone, cube;
 addEventListener("load", () => {
     scouter = document.getElementById("scouter");
@@ -11,13 +17,13 @@ addEventListener("load", () => {
 
     cone = document.getElementById("cone");
     cone.addEventListener("click", () => {
-        cone.setAttribute("src", cone.parentElement.getAttribute("select-value") == "cone" ? "assets/imgs/cone.svg" : "assets/imgs/cone_selected.svg");
-        cube.setAttribute("src", "assets/imgs/cube.svg");
+        cone.setAttribute("src", cone.parentElement.getAttribute("select-value") == "cone" ? dcone : dcone_selected);
+        cube.setAttribute("src", dcube);
     });
     cube = document.getElementById("cube");
     cube.addEventListener("click", () => {
-        cube.setAttribute("src", cube.parentElement.getAttribute("select-value") == "cube" ? "assets/imgs/cube.svg" : "assets/imgs/cube_selected.svg");
-        cone.setAttribute("src", "assets/imgs/cone.svg");
+        cube.setAttribute("src", cube.parentElement.getAttribute("select-value") == "cube" ? dcube : dcube_selected);
+        cone.setAttribute("src", dcone);
     });
 
     document.getElementById("back").addEventListener("click", () => {
@@ -66,8 +72,8 @@ function loadFromLocalStorage() {
     match.value = window.localStorage.getItem("match");
     noShow.checked = window.localStorage.getItem("noShow") == "true";
     preload.setAttribute("select-value", window.localStorage.getItem("preload"));
-    cone.setAttribute("src", preload.getAttribute("select-value") == "cone" ? "assets/imgs/cone_selected.svg" : "assets/imgs/cone.svg");
-    cube.setAttribute("src", preload.getAttribute("select-value") == "cube" ? "assets/imgs/cube_selected.svg" : "assets/imgs/cube.svg");
+    cone.setAttribute("src", preload.getAttribute("select-value") == "cone" ? dcone_selected : dcone);
+    cube.setAttribute("src", preload.getAttribute("select-value") == "cube" ? dcube_selected : dcube);
     
 }
 
