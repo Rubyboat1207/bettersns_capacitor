@@ -1,7 +1,7 @@
 import { goPage } from "./script";
 import { clearData } from "./script"
 
-export function saveToLocalStorage() {
+function saveToLocalStorage() {
     //window.localStorage.setItem("notes", document.getElementById("notes").value);
     window.localStorage.setItem("GeneralRating", document.getElementById("GeneralRating").value);
     window.localStorage.setItem("Teamwork", document.getElementById("Teamwork").value);
@@ -25,7 +25,7 @@ addEventListener('load', function () {
         goPage("index");
     });
     document.getElementById("back").addEventListener("click", () => {
-        saveToLocalStorage()
+        saveToLocalStorage("postmatch")
         goPage("teleop");
     });
 

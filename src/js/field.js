@@ -1,7 +1,6 @@
 import dcone from "../assets/imgs/cone.svg";
 import dcube from "../assets/imgs/cube.svg";
 import battery from "../assets/imgs/unsuccessful_charge.svg";
-import battery_slightly_charged from "../assets/imgs/slight_charge.svg";
 import battery_charged from "../assets/imgs/successful_charge.png";
 
 const icons = document.getElementsByClassName("icon");
@@ -9,7 +8,7 @@ let floor_icons;
 
 const alliance = window.localStorage.getItem('alliance');
 let icons_location = [];
-let level = false;
+let charged = false;
 
 function setGridLocation(loc, value) {
     if(loc.y != 2) {
@@ -45,23 +44,21 @@ function setGridLocation(loc, value) {
     child.classList.remove("cone");
 
     if(type == null) {
-        loc.positive = false;
         child.remove();
         return;
     }
-    loc.positive = true;
+
     child.setAttribute("src", type == "cube" ? dcube : dcone);
     child.classList.add(`${type}`);
 }
 
 function registerElevatedIcons() {
+    floor_icons = document.getElementById('floor').children;
     for(let i = 0; i < icons.length; i++) {
         const loc = {
             x: Math.floor(i / 2),
             y: i % 2,
-            difficulty:  2 - i % 2,
-            positive: false,
-            type: icons[i].children[0].classList.contains("cube") ? "cube" : "cone"
+            positive: false
         };
         icons_location.push(loc)
 
@@ -81,15 +78,12 @@ function registerElevatedIcons() {
 }
 
 function registerFloorIcons() {
-    floor_icons = document.getElementById('floor').children;
     const floor = document.getElementById("floor");
     for(let i = 0; i < floor.children.length; i++) {
         const loc = {
             x: i,
             y: 2,
-            difficulty: 0,
-            type: null,
-            positive: false
+            type: null
         };
         let space = floor.children[i];
         space.addEventListener("click", () => {
@@ -119,25 +113,21 @@ function registerFloorIcons() {
 
 export function saveToLocalStorage(prefix) {
     window.localStorage.setItem(`${prefix}-location`, JSON.stringify(icons_location));
-    window.localStorage.setItem(`${prefix}-charged`, level);
+    window.localStorage.setItem(`${prefix}-charged`, charged);
     window.localStorage.setItem(`${prefix}-attempted_place`, document.getElementById("community-place").classList.contains("checked"));
 }
 
 export function loadFromLocalStorage(prefix) {
-    if(!loaded) {
-        registerElevatedIcons();
-        registerFloorIcons();
-    }
     console.log(prefix)
     const loc = JSON.parse(window.localStorage.getItem(`${prefix}-location`));
-    level = window.localStorage.getItem(`${prefix}-charged`) || 0;
+    charged = window.localStorage.getItem(`${prefix}-charged`) == "true";
     const attempted_place = window.localStorage.getItem(`${prefix}-
     attempted_place`) == "true";
     if(attempted_place) {
         document.getElementById("community-place").click();
     }
     
-    setBatteryCharge(parseInt(level));
+    document.getElementById("charge").setAttribute("src", charged ? battery_charged : battery);
     if(loc == null) {
         return;
     }
@@ -157,15 +147,9 @@ export function setCallback(callback) {
     completeCallback = callback;
 }
 
-let loaded = false;
-
 addEventListener('load', function() {
-    if(!loaded) {
-        registerElevatedIcons();
-        registerFloorIcons();
-    }
-
-    loaded = true;
+    registerElevatedIcons();
+    registerFloorIcons();
     if(alliance) {
         const side_grids = document.getElementsByClassName("side-grids");
         for(let grid of side_grids) {
@@ -173,26 +157,10 @@ addEventListener('load', function() {
         }
     }
     this.document.getElementById("charge").addEventListener("click", (e) => {
-        let lvl = e.target.getAttribute("lvl");
-        let new_charge = loopAround(parseInt(lvl) + 1, 0, 2);
-        this.document.getElementById("charge").setAttribute("lvl", new_charge)
-        setBatteryCharge(new_charge);
+        charged = e.target.getAttribute("src") == battery_charged;
+        e.target.setAttribute("src", charged ? battery : battery_charged);
+        charged = !charged;
     });
     console.log(icons_location);
     completeCallback();
 });
-
-function setBatteryCharge(level) {
-    let levels = [battery, battery_slightly_charged, battery_charged]
-    document.getElementById("charge").setAttribute("src", levels[level]);
-}
-
-function loopAround(number, min, max) {
-    if(number < min) {
-        return max;
-    }
-    if(number > max) {
-        return min;
-    }
-    return number;
-}
