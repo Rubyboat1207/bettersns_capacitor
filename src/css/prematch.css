@@ -64,7 +64,8 @@ span {
     height: 25px;
     /* This is width*/
     transform: rotate(90deg);
-    background: #d3d3d3;
+    background-image: url("../assets/imgs/slidervalue3.png");
+    background-repeat: no-repeat;
     outline: none;
     opacity: 0.3;
     -webkit-transition: .2s;
