@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' *; script-src 'self'"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/scoring.css" />
+
+    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/api.js"></script>
+    <script type="module" src="./js/api-integration.js"></script>
+    <script type="module" src="./js/scoring.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div id="red" class="alliance"><div></div></div>
+      <div id="blue" class="alliance"><div></div></div>
+      <h1>Scoring Statistics</h1>
+    </div>
+    <div class="notes hidden" id="notes-container">
+      <div class="notes-outline">
+        <div class="content-container">
+          <h1>Notes</h1>
+          <div class="line"></div>
+          <textarea
+            id="notes"
+            placeholder="ex. Cycle times are slow"
+          ></textarea>
+        </div>
+      </div>
+      <div class="notes-button" id="notes-button">
+        <span>&gt;&gt;</span>
+      </div>
+    </div>
+    <div class="vertLayout large-section vl_left">
+      <div class="vertLayout">
+        <div class="horizLayout scores">
+          <div>
+            <h2>Points</h2>
+            <input class="points" id="points">
+          </div>
+          <div>
+            <h2>Penalties</h2>
+            <input class="penalties" id="penalties">
+          </div>
+        </div>
+      </div>
+      <div class="final-score vertLayout">
+        <h2>Final Score</h2>
+        <h3>(this should fill itself if you enter the top values)</h3>
+        <input id="final-score">
+      </div>
+      <div class="rank-points vertLayout">
+        <h2>Rank Points</h2>
+        <input id="rank-points">
+      </div>
+      <div class="vertLayout button">
+        <button id="upload">Save and Upload</button>
+        <button id="save">Save</button>
+      </div>
+    </div>
+
+
+    <img src="assets/imgs/trash.svg" class="trash" id="trash" />
+    <img src="assets/imgs/back.svg" class="back" id="back" />
+  </body>
+</html>

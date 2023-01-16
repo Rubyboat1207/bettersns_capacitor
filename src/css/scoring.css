@@ -1,0 +1,91 @@
+.large-section {
+    margin-top: 20vh;
+}
+
+.button {
+    margin-top: 3vh;
+}
+
+.trash {
+    position: absolute;
+    bottom: 4.5vh;
+    left: 3vw;
+    cursor: pointer;
+}
+
+.back {
+    position: absolute;
+    bottom: 12.5vh;
+    left: 3vw;
+    cursor: pointer;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+#save {
+    margin-top: 1vh;
+}
+
+.horizLayout.scores {
+    width: 60%;
+}
+
+input {
+    width: 10vh;
+    height: 10vh;
+    margin-top: 1vh;
+    font-size: 1.7em;
+    font-family: regular;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #3f444d;
+    background-color: #21252C;
+    color: white;
+    text-align: center;
+    font-size: 5vh;
+}
+
+.final-score {
+    height: 30vh;
+}
+
+.final-score input {
+    width: 15vh;
+    height: 15vh;
+    font-size: 7vh;
+    border-color: #CD3636;
+    border-width: 8px;
+}
+
+.scores h2 {
+    text-align: center;
+    font-size: 3vh;
+}
+
+h2 {
+    padding-top: 0;
+}
+
+.final-score h2 {
+    text-align: center;
+    font-size: 3.5vh;
+}
+
+.final-score h3 {
+    text-align: center;
+    font-size: 1.75vh;
+    text-align: center;
+    font-style: italic;
+    font-family: d_light;
+    color: white;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.rank-points input {
+    width: 8vh;
+    height: 8vh;
+}

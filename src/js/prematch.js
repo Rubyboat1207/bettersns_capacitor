@@ -30,7 +30,6 @@ addEventListener("load", () => {
         goPage("index");
     });
     loadFromLocalStorage();
-    window.screen.orientation.lock("portrait");
 });
 
 function formIsValid() {
@@ -58,7 +57,7 @@ function saveToLocalStorage() {
     window.localStorage.setItem("teamName", team.value);
     window.localStorage.setItem("teamNumber", teamNumber.value);
     window.localStorage.setItem("match", match.value);
-    window.localStorage.setItem("noShow", noShow.checked);
+    window.localStorage.setItem("noShow", noShow.classList.contains("checked"));
     window.localStorage.setItem("preload", preload.getAttribute("select-value"));
 }
 
@@ -67,7 +66,9 @@ function loadFromLocalStorage() {
     team.value = window.localStorage.getItem("teamName");
     teamNumber.value = window.localStorage.getItem("teamNumber");
     match.value = window.localStorage.getItem("match");
-    noShow.checked = window.localStorage.getItem("noShow") == "true";
+    if(window.localStorage.getItem("noShow") == "true") {
+        noShow.classList.add("checked");
+    }
     preload.setAttribute("select-value", window.localStorage.getItem("preload"));
     cone.setAttribute("src", preload.getAttribute("select-value") == "cone" ? dcone_selected : dcone);
     cube.setAttribute("src", preload.getAttribute("select-value") == "cube" ? dcube_selected : dcube);
@@ -77,6 +78,10 @@ function loadFromLocalStorage() {
 function nextPage() {
     if (formIsValid()) {
         saveToLocalStorage();
+        if(noShow.classList.contains("checked")) {
+            goPage("scoring");
+            return;
+        }
         goPage("auton");
     }
 }

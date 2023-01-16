@@ -16,6 +16,7 @@ function getconfig() {
           auton: resolve(__dirname, './src/auton.html'),
           teleop: resolve(__dirname, './src/teleop.html'),
           postmatch: resolve(__dirname, './src/postmatch.html'),
+          scoring: resolve(__dirname, './src/scoring.html'),
         },
       },
     },

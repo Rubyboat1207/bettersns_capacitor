@@ -1,5 +1,4 @@
 import { goPage } from "./script";
-import { clearData } from "./script"
 
 export function saveToLocalStorage() {
     //window.localStorage.setItem("notes", document.getElementById("notes").value);
@@ -20,9 +19,9 @@ function loadFromLocalStorage() {
 
 
 addEventListener('load', function () {
-    document.getElementById("trash").addEventListener("click", () => {
-        clearData();
-        goPage("index");
+    document.getElementById("scoring").addEventListener("click", () => {
+        saveToLocalStorage();
+        goPage("scoring");
     });
     document.getElementById("back").addEventListener("click", () => {
         saveToLocalStorage()

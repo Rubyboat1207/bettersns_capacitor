@@ -86,16 +86,16 @@ function registerToggleEvents() {
 function registerMultiselectEvents() {
     let multiselects = document.getElementsByTagName("multiselect");
     for (let i = 0; i < multiselects.length; i++) {
-        multiselects[i].addEventListener("click", (element) => {
+        multiselects[i].addEventListener("click", (event) => {
             // Finds the multiselect element in the parent tree
-            let multiselect = element.target;
+            let multiselect = event.target;
             while (multiselect.tagName.toLowerCase() != "multiselect") {
                 multiselect = multiselect.parentElement;
             }
-
+            console.log(event.target)
             // Nulls the select-value attribute if the same option is selected twice
             const old_selected = multiselect.getAttribute("select-value");
-            const new_selected = element.target.getAttribute("select-name");
+            const new_selected = event.target.getAttribute("select-name");
             if (old_selected == new_selected) {
                 multiselect.setAttribute("select-value", "");
             } else {
@@ -108,13 +108,13 @@ function registerMultiselectEvents() {
 function enableOnlineElementsDependingOnNetwork() {
     Network.getStatus().then(status => {
         if (status.connected) {
-            document.getElementsByClassName("wifi-req").forEach(element => {
-                element.classList.remove("disabled");
-            });
+            for(let i = 0; i < document.getElementsByClassName("wifi-req").length; i++) {
+                document.getElementsByClassName("wifi-req")[i].classList.remove("disabled");
+            }
         } else {
-            document.getElementsByClassName("wifi-req").forEach(element => {
-                element.classList.add("disabled");
-            });
+            for(let i = 0; i < document.getElementsByClassName("wifi-req").length; i++) {
+                document.getElementsByClassName("wifi-req")[i].classList.add("disabled");
+            }
         }
     });
 }
