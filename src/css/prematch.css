@@ -8,7 +8,11 @@
 
 .inField {
     margin-top: 2vh;
+    
 }
+input[type=number] {
+    -moz-appearance: textfield;
+  }
 
 .toggles {
     margin-top: 10vh;
@@ -51,55 +55,27 @@ span {
 
 
 .slidecontainer {
-    width: 100%;
-}
-
-
-.slider {
-    -webkit-appearance: none;
-    /* Override default CSS styles */
+    width: 100%; 
+  }
+  
+  
+  .slider {
+    -webkit-appearance: none;  
     appearance: none;
-    width: 30%;
-    /* This is height */
-    height: 25px;
-    /* This is width*/
-    transform: rotate(90deg);
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.3;
-    -webkit-transition: .2s;
+    width: 44px; 
+    height: 129px; 
+    background-image: url('../assets/imgs/slidervalue3.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    outline: none; 
+    opacity: 1; 
+    -webkit-transition: .2s; 
     transition: opacity .2s;
-}
-
-
-.slider:hover {
-    opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    /* Override default look */
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    background-image: url('../assets/imgs/sliderdot.png');
+    background-attachment: scroll;
     appearance: none;
-    width: 25px;
-    /* Set a specific slider handle width */
-    height: 25px;
-    /* Slider handle height */
-    background: url('sliderdot.png');
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    /* Set a specific slider handle width */
-    height: 25px;
-    /* Slider handle height */
-    background: #04AA6D;
-    /* Green background */
-    background: url('sliderdot.png');
-    cursor: pointer;
-    /* Cursor on hover */
-}
-
-.wifi-rec {
-    display: none;
 }

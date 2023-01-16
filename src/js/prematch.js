@@ -37,6 +37,10 @@ function formIsValid() {
         alert("Please enter your name before continuing");
         return false;
     }
+    if (team.value == "") {
+        alert("Please enter a team name before continuing");
+        return false;
+    }
     if (teamNumber.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a team number before continuing");
         return false;

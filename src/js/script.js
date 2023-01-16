@@ -1,4 +1,4 @@
-import { Network } from '@capacitor/network';
+
 // apolgies for anyone who has to read this, not my best work.
 // rewriting this in react would be a good idea, but I don't have the time
 
@@ -125,9 +125,9 @@ addEventListener("load", () => {
     // -- Alliance Selection --
     if (document.getElementById("red") && document.getElementById("blue")) {
         registerTabEvents();
-        if (window.localStorage.getItem("alliance") === "true") {
+        if (window.localStorage.getItem("alliance") == "true") {
             select(blue);
-        } else if (window.localStorage.getItem("alliance") === "false") {
+        } else {
             select(red);
         }
     }
@@ -135,47 +135,17 @@ addEventListener("load", () => {
     if (display) {
         if (window.localStorage.getItem("alliance") == "true") {
             display.classList.add("d_blue");
-        } else if (window.localStorage.getItem("alliance") == "false") {
+        } else {
             display.classList.add("d_red");
         }
     }
-    enableOnlineElementsDependingOnNetwork();
     // -- Toggle --
     registerToggleEvents();
     // -- Multiselect --
     registerMultiselectEvents();
-    // -- Notes --
-    const notes = document.getElementById("notes-container");
-    const notesbutton = document.getElementById("notes-button");
-    if (notes) {
-        notes.value = window.localStorage.getItem("notes");
-        notes.addEventListener("input", (element) => {
-            window.localStorage.setItem("notes", element.target.value);
-        });
-        notesbutton.addEventListener("click", () => {
-            notes.classList.toggle("hidden");
-            if(!notes.classList.contains("hidden")) {
-                notes.focus();
-                notesbutton.children[0].innerHTML = '&lt;&lt;'
-            }else {
-                notesbutton.children[0].innerHTML = '&gt;&gt;'
-            }
-        });
-    }
 })
 
 export function clearData() {
     window.localStorage.clear();
     window.location.reload();
 }
-
-Network.addListener('networkStatusChange', status => {
-    const wifi = document.getElementsByClassName("wifi-req")
-    for(let i = 0; i < wifi.length; i++) {
-        if(status.connected) {
-            wifi[i].classList.remove("disabled");
-        }else {
-            wifi[i].classList.add("disabled");
-        }
-    }
-});
