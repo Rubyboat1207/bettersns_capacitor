@@ -45,17 +45,21 @@
         <div class="horizLayout toggles">
           <div class="preload">
             <span>Preload</span>
-            <div class="line"></div>
+            <div class="line" orient="vertical"></div>
             <multiselect id="preload">
               <img src="assets/imgs/cube.svg" select-name="cube" id="cube"/>
               <img src="assets/imgs/cone.svg" select-name="cone" id="cone"/>
             </multiselect>
           </div>
-        <div class="vertLayout">
-          <div class="horizLayout" >
+          <div>
+          <div class="vertLayout" id="roboRange">
+            <span>Starting Position</span>
+            <div class="sliderbackground">
+              <img src="assets/imgs/slidervalue3.png"/> </div>
+            <div class="line"></div>
             <div class="slidecontainer">
-              <input type="range" min="1" max="3" value="2" class="slider" id="myRange" >
-            </div>  
+                <input type="range" min="1" max="3" value="2" class="slider" id="roboRange" >
+              </div>  
           </div>
         </div>
           <checkbox class="vertLayout" id="noShow">
@@ -68,7 +72,6 @@
           </checkbox>
         </div>
       </div>
-
       <div class="vertLayout button">
         <button id="auton">Autonomous</button>
       </div>

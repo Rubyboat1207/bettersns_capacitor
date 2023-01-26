@@ -55,6 +55,8 @@ h1 {
     height: 2.8vh;
     /* This is width*/
     outline: none;
+    rotation-point: 50% 50%;
+    rotation: 90deg;   
     background-color: transparent;
 }
 
@@ -65,6 +67,7 @@ h1 {
     border: none;
     appearance: none;
     background: url('../assets/imgs/ratingdot.svg');
+    background-repeat: no-repeat;
     cursor: pointer;
 }
 

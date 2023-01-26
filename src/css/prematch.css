@@ -51,31 +51,47 @@ span {
     cursor: pointer;
 }
 
+.sliderbackground{
+    width: 100%; 
+    transform: rotate(90deg);
+    background-position-x: center;
+    position: relative;
+    right: 30px;
+    top: 90px;
+    
 
-
+}
+    
 
 .slidecontainer {
     width: 100%; 
   }
   
-  
   .slider {
     -webkit-appearance: none;  
     appearance: none;
-    width: 44px; 
-    height: 129px; 
-    background-image: url('../assets/imgs/slidervalue3.png');
+    width: 129px; 
+    height: 44x; 
+    transform: rotate(90deg);
+    background-size: 50;
+    position: relative;
+    left: 5px;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    outline: none; 
+    background-color: transparent;
+    outline: none;
     opacity: 1; 
     -webkit-transition: .2s; 
     transition: opacity .2s;
   }
+    
   
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none; 
     background-image: url('../assets/imgs/sliderdot.png');
+    background-size: 150px 150px;
     background-attachment: scroll;
+    background-color: transparent;
     appearance: none;
 }
