@@ -10,6 +10,7 @@
     margin-top: 2vh;
     
 }
+
 input[type=number] {
     -moz-appearance: textfield;
   }
@@ -56,10 +57,18 @@ span {
     transform: rotate(90deg);
     background-position-x: center;
     position: relative;
-    right: 30px;
-    top: 90px;
+    left: 10;
+    top: 80px;
     
 
+}
+
+#roboRange .line {
+    background-color: white;
+    width: 105%;
+    height: 0.5vh;
+    margin: 0.5vh 0 0.5vh 0;
+    border-radius: 100px;
 }
     
 
@@ -71,17 +80,16 @@ span {
     -webkit-appearance: none;  
     appearance: none;
     width: 129px; 
-    height: 44x; 
+    height: 44px; 
+    scale: 50px;
     transform: rotate(90deg);
-    background-size: 50;
     position: relative;
-    left: 5px;
-    background-position-x: center;
-    background-position-y: center;
-    background-repeat: no-repeat;
+    left: 35px;
     background-color: transparent;
-    outline: none;
-    opacity: 1; 
+    background-position-x: center;
+    background-size: 150px 150px;
+    background-position-y: center;
+    opacity: 1;
     -webkit-transition: .2s; 
     transition: opacity .2s;
   }
@@ -90,8 +98,29 @@ span {
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none; 
     background-image: url('../assets/imgs/sliderdot.png');
-    background-size: 150px 150px;
-    background-attachment: scroll;
-    background-color: transparent;
+    scale: 44px;
+    width: 44px; 
+    height: 44px; 
+    position: relative;
+    bottom: 10px;
+    left: 15px;
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: scroll;  
+    appearance: none;
+}
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none; 
+    background-image: url('../assets/imgs/sliderdot.png');
+    scale: 44px;
+    width: 44px; 
+    height: 44px; 
+    position: relative;
+    bottom: 10px;
+    left: 15px;
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: scroll;  
     appearance: none;
 }
