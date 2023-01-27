@@ -13,6 +13,9 @@ const pageconfigs = {
     "index": {
         orientation: "portrait",
     },
+    "credits": {
+        orientation: "credits",
+    },
     "prematch": {
         orientation: "portrait",
     },
@@ -149,3 +152,34 @@ export function clearData() {
     window.localStorage.clear();
     window.location.reload();
 }
+
+   // -- Notes --
+   const notes = document.getElementById("notes-container");
+   const notesbutton = document.getElementById("notes-button");
+   if (notes) {
+       notes.value = window.localStorage.getItem("notes");
+       notes.addEventListener("input", (element) => {
+           window.localStorage.setItem("notes", element.target.value);
+       });
+       notesbutton.addEventListener("click", () => {
+           notes.classList.toggle("hidden");
+           if(!notes.classList.contains("hidden")) {
+               notes.focus();
+               notesbutton.children[0].innerHTML = '&lt;&lt;'
+           }else {
+               notesbutton.children[0].innerHTML = '&gt;&gt;'
+           }
+       });
+   }
+
+
+ /*  Network.addListener('networkStatusChange', status => {
+    const wifi = document.getElementsByClassName("wifi-req")
+    for(let i = 0; i < wifi.length; i++) {
+        if(status.connected) {
+            wifi[i].classList.remove("disabled");
+        }else {
+            wifi[i].classList.add("disabled");
+        }
+    }
+});*/
