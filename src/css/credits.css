@@ -1,0 +1,33 @@
+.credLogo{
+    position: relative;
+    left: 45px;
+}
+
+.appS{
+    position: relative;
+    top: 80px;
+    left: 129.5px;
+}
+
+.apiS{
+    position: relative;
+    top: 120px;
+    left: 129.5px;
+}
+
+.creditsClass{
+    position: relative;
+    top: 250px;
+    font-family: regular;
+    color: white;
+    font-size: 1.75em;
+    text-align: center;
+    line-height: 20px;
+}
+
+
+.back{
+    position: relative;
+    top: 600px;
+    left: 129.5px;
+}

@@ -44,6 +44,7 @@ h1 {
     width: 540px;
     height: 3.4vh;
     background: url("../assets/imgs/rating_line.svg");
+    background-repeat: no-repeat;
 }
 
 .slider {
@@ -55,6 +56,11 @@ h1 {
     height: 2.8vh;
     /* This is width*/
     outline: none;
+    rotation-point: 50% 50%;
+    position: relative;
+    bottom: 4px;
+    left: 4px;
+    rotation: 90deg;   
     background-color: transparent;
 }
 
@@ -65,6 +71,7 @@ h1 {
     border: none;
     appearance: none;
     background: url('../assets/imgs/ratingdot.svg');
+    background-repeat: no-repeat; 
     cursor: pointer;
 }
 

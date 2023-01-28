@@ -90,3 +90,15 @@ function nextPage() {
     }
 }
 
+/*div class="notes hidden" id="notes-container">
+<div class="notes-outline">
+  <div class="content-container">
+    <h1>Notes</h1>
+    <div class="line"></div>
+    <textarea id="notes" placeholder="ex. Cycle times are slow"></textarea>
+  </div>
+</div>
+<div class="notes-button" id="notes-button">
+  <span>&gt;&gt;</span>
+</div>
+</div>*/
