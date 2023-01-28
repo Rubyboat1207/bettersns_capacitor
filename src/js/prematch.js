@@ -37,10 +37,6 @@ function formIsValid() {
         alert("Please enter your name before continuing");
         return false;
     }
-    if (team.value == "") {
-        alert("Please enter a team name before continuing");
-        return false;
-    }
     if (teamNumber.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a team number before continuing");
         return false;
@@ -58,7 +54,6 @@ function formIsValid() {
 
 function saveToLocalStorage() {
     window.localStorage.setItem("scouter", scouter.value);
-    window.localStorage.setItem("teamName", team.value);
     window.localStorage.setItem("teamNumber", teamNumber.value);
     window.localStorage.setItem("match", match.value);
     window.localStorage.setItem("noShow", noShow.classList.contains("checked"));
@@ -67,7 +62,6 @@ function saveToLocalStorage() {
 
 function loadFromLocalStorage() {
     scouter.value = window.localStorage.getItem("scouter");
-    team.value = window.localStorage.getItem("teamName");
     teamNumber.value = window.localStorage.getItem("teamNumber");
     match.value = window.localStorage.getItem("match");
     if(window.localStorage.getItem("noShow") == "true") {

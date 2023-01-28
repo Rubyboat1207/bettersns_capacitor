@@ -194,6 +194,14 @@ h2 {
   background-color: #E88383;
 }
 
+#blue.selected {
+  filter: drop-shadow(0 0 0.75rem #3673CD);
+}
+
+#red.selected {
+  filter: drop-shadow(0 0 0.75rem #CD3636);
+}
+
 checkbox>span {
   font-family: regular;
   font-size: 2em;
