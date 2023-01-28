@@ -1,1 +1,1 @@
-npm run build && npx cap sync android && npx cap open android
+del android && npm run build && npx cap sync android && npx cap open android
