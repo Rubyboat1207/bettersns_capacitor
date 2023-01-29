@@ -6,3 +6,7 @@ addEventListener("load", () => {
 addEventListener("load", () => {
     document.getElementById("source").addEventListener("click", () => { goPage("credits") })
 })
+
+addEventListener("load", () => {
+    document.getElementById("feedback").addEventListener("click", () => { goPage("feedback") })
+})

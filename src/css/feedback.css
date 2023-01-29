@@ -1,13 +1,13 @@
+.credLogo{
+    position: relative;
+    left: 45px;
+}
 
 
-
-
-
-
-
-
-
-
+.feedbackbackground{
+    position: relative;
+    left: 45px;
+}
 
 
 
@@ -20,4 +20,5 @@
 .back{
     position:relative; 
     top: 800px;
+    left: 129.5px;
 }
