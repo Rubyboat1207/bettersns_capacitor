@@ -3,11 +3,9 @@
     left: 45px;
 }
 
-
-.feedbackbackground{
-    position: relative;
-    left: 45px;
-}
+input[type=number] {
+    -moz-appearance: textfield;
+  }
 
 
 
