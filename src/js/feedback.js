@@ -1,3 +1,5 @@
+import { goPage } from "./script.js"
+
 addEventListener("load", () => {
     document.getElementById("back").addEventListener("click", () => { goPage("start") })
 })

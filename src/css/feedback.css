@@ -1,22 +1,102 @@
+@font-face {
+    font-family: regular;
+    src: url(../assets/fonts/Dosis-Regular.ttf);
+}
+
 .credLogo{
     position: relative;
     left: 45px;
 }
 
+.backgroundClass{
+    position: relative;
+    left: 38px;
+}
+
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
+h1 {
+    font-family: regular;
+    color: white;
+    padding-top: 1vh;
+    font-size: 3em;
+}
 
+body {
+    background-color: #212229;
+}
 
+.text{
+    position: relative;
+    left: 175px;
+    bottom: 960px;
+}
+  
+.reportName {
+    font-family: regular;
+    color:white;
+    position: relative;
+    left: 125px;
+    bottom: 940px;
+}
+  
+.reportName .line {
+    background-color: white;
+    height: 0.3vh;
+    width: 60%;
+    position: relative;
+    top: 10px;
+}
+  
+.reportName>span {
+    font-family: d_light;
+    font-size: 3em;
+}
+  
+.reportName>input {
+    width: 65vw;
+    height: 5vh;
+    margin-top: 2vh;
+    font-size: 1.7em;
+    font-family: regular;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 7px;
+    border-color: #3f444d;
+    background-color: #21252C;
+    color: white;
+}
 
+.messageText{
+    position: relative;
+    bottom: 980px;
+    left: 120px;
+}
 
+.textAreaBackground{
+    position: relative;
+    bottom: 1070px;
+    left: 9px;
+    scale: 70%;
+    width: 100%;
 
+}
 
-
+.txtInput{
+    position: relative;
+    bottom: 1070px;
+    left: 120px;
+    width: 550px;
+    resize: none;
+}
+.txtInput>input{
+    height: 300px;
+}
 
 .back{
     position:relative; 
-    top: 800px;
+    top: 80px;
     left: 129.5px;
 }
