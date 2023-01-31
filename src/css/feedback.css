@@ -86,17 +86,21 @@ body {
 
 .txtInput{
     position: relative;
-    bottom: 1070px;
-    left: 120px;
-    width: 550px;
-    resize: none;
-}
-.txtInput>input{
+    bottom: 1460px;
+    left: 136px;
+    width: 520px;
     height: 300px;
+    resize: none;
+    background-color: transparent;
+    border-color: transparent;
+    outline-color: transparent;
+    font-family: regular;
+    color: white;
 }
 
+
 .back{
-    position:relative; 
-    top: 80px;
+    position: relative; 
+    bottom: 180px;
     left: 129.5px;
 }
