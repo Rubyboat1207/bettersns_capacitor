@@ -1,106 +1,68 @@
-@font-face {
-    font-family: regular;
-    src: url(../assets/fonts/Dosis-Regular.ttf);
-}
 
-.credLogo{
-    position: relative;
-    left: 45px;
+.background {
+    margin-top: 1vh;
+    background-color: #0f0d1f;
+    width: 90vw;
+    height: 85vh;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.backgroundClass{
-    position: relative;
-    left: 38px;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-h1 {
-    font-family: regular;
-    color: white;
-    padding-top: 1vh;
-    font-size: 3em;
-}
-
-body {
-    background-color: #212229;
-}
-
-.text{
-    position: relative;
-    left: 175px;
-    bottom: 960px;
-}
-  
-.reportName {
-    font-family: regular;
-    color:white;
-    position: relative;
-    left: 125px;
-    bottom: 940px;
-}
-  
-.reportName .line {
-    background-color: white;
-    height: 0.3vh;
-    width: 60%;
-    position: relative;
-    top: 10px;
-}
-  
-.reportName>span {
-    font-family: d_light;
-    font-size: 3em;
-}
-  
-.reportName>input {
-    width: 65vw;
-    height: 5vh;
-    margin-top: 2vh;
-    font-size: 1.7em;
-    font-family: regular;
+.outline {
+    border: 5px solid #AB5555;
     border-radius: 15px;
-    border-style: solid;
-    border-width: 7px;
-    border-color: #3f444d;
+    height: 93%;
+    width: 90%;
+    box-shadow: 0px 0px 10px #AB5555;
+}
+
+.text {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.reportName {
+    margin-top: -4vh;
+    margin-bottom: -3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inField {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 75vw;
+    height: 35vh;
     background-color: #21252C;
+    border-radius: 18px;
+    margin-left: 2.7vw;
+}
+
+.txtInput {
     color: white;
-}
-
-.messageText{
-    position: relative;
-    bottom: 980px;
-    left: 120px;
-}
-
-.textAreaBackground{
-    position: relative;
-    bottom: 1070px;
-    left: 9px;
-    scale: 70%;
-    width: 100%;
-
-}
-
-.txtInput{
-    position: relative;
-    bottom: 1460px;
-    left: 136px;
-    width: 520px;
-    height: 300px;
-    resize: none;
-    background-color: transparent;
+    width: 74vw;
+    height: 34vh;
     border-color: transparent;
-    outline-color: transparent;
-    font-family: regular;
-    color: white;
+    box-shadow: 0px 0px 10px white;
+    background-color: transparent;
 }
 
 
-.back{
-    position: relative; 
-    bottom: 180px;
-    left: 129.5px;
+.back {
+    margin-top: 6vh;
+    margin-left: 6vw;
+
 }

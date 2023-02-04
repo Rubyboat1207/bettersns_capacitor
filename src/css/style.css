@@ -119,6 +119,15 @@ h2 {
   font-size: 1.75em;
 }
 
+h3 {
+  margin: 0 0 0 0;
+  font-family: d_light;
+  font-weight: lighter;
+  color: white;
+  padding-top: 0.8vh;
+  font-size: 1.5em;
+}
+
 #red {
   background: #CD3636;
   left: 8vw;

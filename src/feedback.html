@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self' *; script-src 'self'"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/feedback.css" />
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' *; script-src 'self'" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/feedback.css" />
 
-    <script type="module" src="./js/script.js"></script>
-    <script type="module" src="./js/feedback.js"></script>
-  </head>
-  <body> 
-    <img class="credLogo" id="credId" src="./assets/imgs/logo.png"/>
-    <img class="backgroundClass" id="backgroundId" src="./assets/imgs/feedbackground.png"/>
-    <h1 class="text">Feedback / Bug Report</h1>
-    <div class="reportName">
-      <span>Scouter Name</span>
-      <div class="line"></div>
-      <input type="text" placeholder="ex. John Doe" id="reporterName" />
+  <script type="module" src="./js/script.js"></script>
+  <script type="modPule" src="./js/feedback.js"></script>
+</head>
+
+<body>
+  <div class="vertLayout">
+    <img class="credLogo" id="credId" src="./assets/imgs/logo.png" />
+    <h3 class="version" id="version"></h3>
+    <div class="background">
+      <div class="outline">
+        <h1 class="text">Feedback / Bug Report</h1>
+        <div class="reportName">
+          <h1>Your Name</h1>
+        </div>
+        <div class="inField">
+          <input id="reporterName" type="text" placeholder="ex. John Doe"/>
+        </div>
+        <div>
+          <h1 class="messageText">Message:</h1>
+          <div class="box">
+            <textarea id="txtInput" class="txtInput" rows="4" cols="50"></textarea>
+
+          </div> 
+          <button class="back" id="back">Back</button>
+
+        </div>
+
+      </div>
+
     </div>
-    <div>
-      <h1 class="messageText" >Message:</h1>
-      <img class="textAreaBackground" src="./assets/imgs/feedbackbox.png"/>
-      <textarea id="txtInput" class="txtInput" rows="4" cols="50"> 
-      At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-      </textarea>
-    </div>
-    
-    <div>
-    <button class="back" id="back">Back</button>
-    </div>
-  </body>
+  </div>
+</body>
 </html>
-    
