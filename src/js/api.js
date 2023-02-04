@@ -69,20 +69,20 @@ export async function writeDataToFile() {
       directory: Directory.Documents,
       encoding: Encoding.UTF8,
     });
-    return;
+    //return;
   }
   saveToFileWeb();
 }
 
 function saveToFileWeb() {
   //download gathered data as json file
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gatherData()));
-    const downloadAnchorNode = document.createElement("a");
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "data.json");
-    document.body.appendChild(downloadAnchorNode); // required for firefox
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gatherData()));
+  const downloadAnchorNode = document.createElement("a");
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "data.json");
+  document.body.appendChild(downloadAnchorNode); // required for firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
 }
 
 export async function uploadData() {

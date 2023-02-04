@@ -202,6 +202,54 @@ h2 {
   filter: drop-shadow(0 0 0.75rem #CD3636);
 }
 
+.notes.hidden {
+  left: -87vw;
+}
+
+
+
+.notes {
+  position: absolute;
+  top: 15vh;
+  left: -8vw;
+  width: 90%;
+  height: 75%;
+  background-color: #0F0D1F;
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.35s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.3,.77,.51,.91);
+}
+
+.notes-button {
+  position: relative;
+  left: 3vw;
+  width: 6vw;
+  height: 30vh;
+  background-color: #0F0D1F;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notes-outline {
+  border-radius: 20px;
+  border: 3px solid #AB5555;
+  width: 94%;
+  height: 95%;
+  z-index: 101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 checkbox>span {
   font-family: regular;
   font-size: 2em;
@@ -237,4 +285,34 @@ checkbox {
   transition-duration: 0.35s;
   transition-property: all;
   transition-timing-function: cubic-bezier(.5, .24, .5, 2);
+}
+
+
+.content-container>.line {
+  width: 90%;
+  height: 0.2vh;
+  background-color: white;
+  margin: 0.5vh 0 0.5vh 0;
+  margin-bottom: 0px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  margin-left: 6vw;
+}
+
+.content-container>textarea {
+  width: 90%;
+  height: 80%;
+  background-color: #21252C;
+  border: 0;
+  margin-top: 0px;
+  color: white;
+  font-family: regular;
+  font-size: 1.5em;
 }
