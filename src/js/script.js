@@ -36,8 +36,6 @@ export function goPage(page) {
     window.screen.orientation.lock(pageconfigs[page].orientation);
 }
 
-
-
 // These two functions are a wrapper for the generic select function
 // So that you can include it in the HTML, instead of having to write a listener
 export function selectRed() {
@@ -130,10 +128,16 @@ addEventListener("load", () => {
         registerTabEvents();
         if (window.localStorage.getItem("alliance") == "true") {
             select(blue);
-        } else {
+        } else if (window.localStorage.getItem("alliance") === "false"){
             select(red);
         }
+        
     }
+
+    //version number, current game
+    const version = "1.0 Charged Up";
+    document.getElementById("version").innerHTML = version;
+
     const display = document.getElementById("alliance-display");
     if (display) {
         if (window.localStorage.getItem("alliance") == "true") {

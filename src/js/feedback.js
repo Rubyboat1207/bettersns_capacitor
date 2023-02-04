@@ -1,7 +1,7 @@
 import { goPage } from "./script.js"
 
 addEventListener("load", () => {
-    document.getElementById("back").addEventListener("click", () => { goPage("start") })
+    document.getElementById("back").addEventListener("click", () => { goPage("index") })
 })
 
 function formIsValid() {
