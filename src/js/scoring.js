@@ -24,12 +24,14 @@ function loadFromLocalStorage() {
     window.localStorage.getItem("points");
   document.getElementById("penalties").value =
     window.localStorage.getItem("penalties");
-  document.getElementById("final-score").value = parseInt(
+  let finalscore = parseInt(
     window.localStorage.getItem("final-score")
-  );
-  document.getElementById("rank-points").value = parseInt(
+  )
+  document.getElementById("final-score").value = finalscore == NaN ? '' : finalscore;
+  let rankpoints = parseInt(
     window.localStorage.getItem("rank-points")
   );
+  document.getElementById("rank-points").value = rankpoints == NaN ? '' : finalscore;
 }
 
 addEventListener("load", function () {
@@ -49,6 +51,11 @@ addEventListener("load", function () {
     let val = parseInt(points.value);
     if (penalties.value) {
       val -= parseInt(penalties.value);
+    }
+    console.log(val)
+    if(val == NaN) {
+      total.value = '';
+      return;
     }
     total.value = val;
   });
