@@ -21,7 +21,7 @@ function loadFromLocalStorage() {
 addEventListener('load', function () {
     document.getElementById("scoring").addEventListener("click", () => {
         saveToLocalStorage();
-        goPage("scoring");
+        goPage("robot");
     });
     document.getElementById("back").addEventListener("click", () => {
         saveToLocalStorage("postmatch")

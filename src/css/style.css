@@ -215,8 +215,6 @@ h3 {
   left: -87vw;
 }
 
-
-
 .notes {
   position: absolute;
   top: 15vh;
@@ -257,6 +255,25 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.dropdown {
+  background: #49505D;
+  border: 5px solid #6D7C9A;
+  border-radius: 6px;
+}
+
+.dropdown-arrow {
+  background: #3A3C49;
+  border: 5px solid #6D7C9A;
+  border-radius: 4px;
+  transform: rotate(-180deg);
+}
+
+.dropdown-options {
+  background: #49505D;
+  border: 7px solid #6D7C9A;
+  border-radius: 3px;
 }
 
 checkbox>span {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' *; script-src 'self'" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/robot.css" />
+
+  <script type="module" src="./js/script.js"></script>
+  <script type="module" src="./js/robot.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div id="red" class="alliance">
+      <div></div>
+    </div>
+    <div id="blue" class="alliance">
+      <div></div>
+    </div>
+    <h1>Robot Attributes</h1>
+  </div>
+  <div class="armAttributes">
+    <span>Robot Attributes</span>
+    <div class="line"></div>
+    <textarea id="arm/manipulator" class="arm/manipulator" rows="4" cols="50"></textarea>
+  </div>
+  <div class="driveTrain">
+    <span>Drive Train Style</span>
+    <div class="line"></div>
+    <select name="drivetrains">
+      <option value="swerve">Swerve</option>
+      <option value="tank">Tank</option>
+      <option value="mecanum">Mecanum</option>
+      <option value="critter">Critter</option>
+      <option value="nonadrive">Critter</option>
+      <option value="kiwi">Kiwi</option>
+      <option value="xDrive">X-Drive</option>
+      <option value="hDrive">H-Drive</option>
+    </select>
+    <div class="range">
+      <h1>How Agile is the Robot</h1>
+      <div class="line"></div>
+      <div class="slidecontainer vertLayout">
+        <input type="range" min="1" max="5" value="2" class="slider" id="agility">
+      </div>
+    </div>
+    <div class="range">
+      <h1>How Fast is the Robot</h1>
+      <div class="line"></div>
+      <div class="slidecontainer vertLayout">
+        <input type="range" min="1" max="5" value="2" class="slider" id="fast">
+      </div>
+      <div class <div class="canHold">
+        <span>Can Intake hold?</span>
+        <div class="line" orient="vertical"></div>
+        <multiselect id="canHold">
+          <img src="assets/imgs/cube.svg" select-name="cube" id="cube" />
+          <img src="assets/imgs/cone.svg" select-name="cone" id="cone" />
+        </multiselect>
+      </div>
+      <input type="color" id="roboColor" name="roboColor" value="#ff0000"> 
+    </div>
+  </div>
+</body>
+
+</html>
