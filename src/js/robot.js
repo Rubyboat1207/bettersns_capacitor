@@ -1,4 +1,4 @@
 import { goPage } from "./script.js"
-addEventListener("load", () => {
-    document.getElementById("scoring").addEventListener("click", () => { goPage("scoring") })
-})
+document.getElementById("scoring").addEventListener("click", () => { goPage("scoring") })
+document.getElementById("back").addEventListener("click", () => { goPage("postmatch") })
+

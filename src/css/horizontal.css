@@ -17,3 +17,11 @@
     background-color: white;
     margin-left: 4.5vw;
 }
+
+.notes-button {
+    width: 3vw;
+}
+
+.notes.hidden {
+    left: -89vw;
+}
