@@ -41,12 +41,13 @@
     <div class="armAttributes textField">
       <span>Robot Attributes</span>
       <div class="line"></div>
-      <textarea id="arm/manipulator" class="arm/manipulator" rows="4" cols="50"></textarea>
+      <textarea id="manip" class="arm/manipulator" rows="4" cols="50"></textarea>
     </div>
     <div class="dropdown">
       <span>Drive Train Style</span>
       <div class="line"></div>
-      <select name="drivetrains">
+      <select name="drivetrains" id="drivetrains">
+        <option value="unsure">unsure / not listed</option>
         <option value="swerve">Swerve</option>
         <option value="tank">Tank</option>
         <option value="mecanum">Mecanum</option>
@@ -56,12 +57,8 @@
         <option value="xDrive">X-Drive</option>
         <option value="hDrive">H-Drive</option>
       </select>
-    </div>
-    <div class="range">
-      <h1>How Agile is the Robot</h1>
-      <div class="line"></div>
-      <div class="slidecontainer vertLayout">
-        <input type="range" min="1" max="5" value="2" class="slider" id="agility">
+      <div id="unsure" class="invis">
+        <input id="unsure_input" placeholder="Describe the drivebase (optional)"/>
       </div>
     </div>
     <div class="range">
@@ -71,7 +68,14 @@
         <input type="range" min="1" max="5" value="2" class="slider" id="fast">
       </div>
     </div>
-    <div class="horizLayout bottom-section">
+    <div class="range">
+      <h1>How Precise is the Robot?</h1>
+      <div class="line"></div>
+      <div class="slidecontainer vertLayout">
+        <input type="range" min="1" max="5" value="2" class="slider" id="agility">
+      </div>
+    </div>
+    <div class="vertLayout bottom-section">
       <div class="select">
         <span>Can Intake hold?</span>
         <div class="line" orient="vertical"></div>
@@ -80,7 +84,6 @@
           <img src="assets/imgs/cone.svg" select-name="cone" id="cone" />
         </div>
       </div>
-      <input type="color" id="roboColor" name="roboColor" value="#ff0000"> 
     </div>
     <div>
       <div class="vertLayout button">

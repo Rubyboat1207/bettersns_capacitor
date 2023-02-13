@@ -14,6 +14,24 @@
     color: white;
 }
 
+.dropdown {
+    height: 12vh;
+}
+
+input#unsure_input  {
+    width: 50vw;
+    height: 4vh;
+    margin-top: 1vh;
+    font-size: 1.7em;
+    font-family: regular;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #3f444d;
+    background-color: #21252C;
+    color: white;
+}
+
 .textField .line {
     background-color: white;
     height: 0.2vh;
@@ -28,7 +46,7 @@
 
 .bottom-section {
     width: 70%;
-    margin-top: 1vh;
+    margin-top: 2vh;
 }
 
 .back {
@@ -44,7 +62,7 @@
     align-items: center;
     gap:5px;
     flex-direction: column;
-    height: 20vh;
+    height: 10vh;
     font-size: 24px;
 }
 
@@ -52,4 +70,12 @@
     background-color: white;
     height: 0.2vh;
     width: 120%;
+}
+
+.invis {
+    display: none;
+}
+
+.button {
+    margin-top: 4vh;
 }

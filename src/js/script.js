@@ -183,6 +183,13 @@ export function clearData() {
     window.localStorage.removeItem("penalties");
     window.localStorage.removeItem("final-score");
     window.localStorage.removeItem("rank-points");
+    window.localStorage.removeItem("arm_description");
+    window.localStorage.removeItem("drivetrain_design");
+    window.localStorage.removeItem("agility_rating");
+    window.localStorage.removeItem("speed_rating");
+    window.localStorage.removeItem("manip_cone");
+    window.localStorage.removeItem("manip_cube");
+    window.localStorage.removeItem("color");
 }
 
    // -- Notes --

@@ -22,6 +22,10 @@ function gatherData() {
         window.localStorage.getItem("auton-charged") == "true",
       attempted_collaboration:
         window.localStorage.getItem("auton-attempted_place") == "true",
+      moved:
+        window.localStorage.getItem("moved") || false,
+      left_community:
+        window.localStorage.getItem("left_community") || false
     },
     teleop: {
       markers: JSON.parse(window.localStorage.getItem("teleop-location")),
@@ -40,6 +44,14 @@ function gatherData() {
       penalties: window.localStorage.getItem("penalties"),
       final_score: window.localStorage.getItem("final-score"),
       rank_points: window.localStorage.getItem("rank-points"),
+    },
+    robot_attributes: {
+      arm_design: window.localStorage.getItem("arm_description"),
+      drive_style: window.localStorage.getItem("drivetrain_design"),
+      agility: window.localStorage.getItem("agility_rating"),
+      speed: window.localStorage.getItem("speed_rating"),
+      intake_containables: `${window.localStorage.getItem("manip_cone")},${window.localStorage.getItem("manip_cube")}`,
+      color: window.localStorage.getItem("color") || "metalic",
     }
   };
 }
@@ -115,18 +127,22 @@ export async function uploadData() {
 }
 
 export async function uploadDataObject(json) {
-  const response = await axios({
-    method: "post",
-    url: "http://localhost:1337/api/v1/form",
-    data: JSON.stringify({data: json}),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.status != 200) {
+  try {
+    const response = await axios({
+      method: "post",
+      url: "http://localhost:1337/api/v1/form",
+      data: JSON.stringify({data: json}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status != 200) {
+      return false;
+    }
+    return await response.data;
+  }catch {
     return false;
   }
-  return await response.data;
 }
 
 export async function uploadAllData() {

@@ -69,7 +69,7 @@ addEventListener("load", function () {
   });
   document.getElementById("back").addEventListener("click", () => {
     saveToLocalStorage();
-    goPage("postmatch");
+    goPage("robot");
   });
   points = document.getElementById("points");
   penalties = document.getElementById("penalties");
