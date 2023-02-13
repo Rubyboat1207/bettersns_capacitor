@@ -28,6 +28,12 @@ const pageconfigs = {
     "postmatch": {
         orientation: "portrait",
     },
+    "robot": {
+        orientation: "portrait",
+    },
+    "scoring": {
+        orientation: "portrait",
+    }
 }
 
 // This is a generic function for going to a page, and locking the screen orientation accordingly
