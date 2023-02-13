@@ -1,4 +1,27 @@
 import { goPage, clearData } from "./script";
+import { saveReqToLocal, uploadAllData, uploadData, writeDataToFile } from "./api"
+
+addEventListener("load", () => {
+    document.getElementById("upload").addEventListener("click", () => {
+        saveToLocalStorage();
+        saveReqToLocal();
+        writeDataToFile();
+        clearData();
+        uploadAllData();
+        goPage("index");
+    });
+
+    document.getElementById("save").addEventListener("click", () => {
+        saveToLocalStorage();
+        saveReqToLocal();
+        writeDataToFile();
+        clearData();
+        goPage("index");
+    });
+})
+
+
+
 let points, penalties, total;
 export function saveToLocalStorage() {
   window.localStorage.setItem(
@@ -19,17 +42,24 @@ export function saveToLocalStorage() {
   );
 }
 
+function numberOrNothing(value) {
+  if(Number.isNaN(value) == true) {
+    return ''
+  }
+  return value;
+}
+
 function loadFromLocalStorage() {
   document.getElementById("points").value =
     window.localStorage.getItem("points");
   document.getElementById("penalties").value =
     window.localStorage.getItem("penalties");
-  document.getElementById("final-score").value = parseInt(
+  document.getElementById("final-score").value = numberOrNothing(parseInt(
     window.localStorage.getItem("final-score")
-  );
-  document.getElementById("rank-points").value = parseInt(
+  ));
+  document.getElementById("rank-points").value = numberOrNothing(parseInt(
     window.localStorage.getItem("rank-points")
-  );
+  ));
 }
 
 addEventListener("load", function () {

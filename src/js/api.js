@@ -6,7 +6,6 @@ function gatherData() {
   return {
     prematch: {
       author: window.localStorage.getItem("scouter"),
-      name: window.localStorage.getItem("teamName"),
       teamid: window.localStorage.getItem("teamNumber"),
       match: window.localStorage.getItem("match"),
       preload:
@@ -41,12 +40,28 @@ function gatherData() {
       penalties: window.localStorage.getItem("penalties"),
       final_score: window.localStorage.getItem("final-score"),
       rank_points: window.localStorage.getItem("rank-points"),
-    },
+    }
   };
 }
 
+export function saveReqToLocal() {
+  let json = gatherData()
+  console.log("gatherd")
+  let reqList = {requests: []};
+  
+
+  if(window.localStorage.getItem("requestCache")) {
+    reqList = JSON.parse(window.localStorage.getItem("requestCache"));
+  }
+
+
+  reqList.requests.push(json);
+
+  window.localStorage.setItem("requestCache", JSON.stringify(reqList))
+}
+
 export async function writeDataToFile() {
-    console.log('writing data to file')
+  console.log('writing data to file')
   if (Capacitor.isNativePlatform()) {
     const path = `/savedata/${new Date().getFullYear()}}/${new Date().getMonth()}/${new Date().getDate()}/${new Date().getSeconds()}.json}}`;
     await Filesystem.writeFile({
@@ -86,7 +101,7 @@ function saveToFileWeb() {
 }
 
 export async function uploadData() {
-  writeDataToFile();
+  writeDataToFile(false);
   console.log(JSON.stringify({ data: gatherData() }));
   const response = await axios({
     method: "post",
@@ -96,10 +111,31 @@ export async function uploadData() {
       "Content-Type": "application/json",
     },
   });
-  if (response.status == 200) {
-    clearData();
+  return await response.data;
+}
+
+export async function uploadDataObject(json) {
+  const response = await axios({
+    method: "post",
+    url: "http://localhost:1337/api/v1/form",
+    data: JSON.stringify({data: json}),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.status != 200) {
+    return false;
   }
   return await response.data;
+}
+
+export async function uploadAllData() {
+  for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
+    console.log(JSON.stringify(item));
+    if(!uploadDataObject(item)) {
+      return false;
+    }
+  }
 }
 
 export async function submitDataFile(file) {
@@ -117,7 +153,6 @@ export async function submitDataFile(file) {
   request.onload = () => {
     console.log(request.responseText);
   };
-  clearData();
 }
 
 export async function uploadCachedData() {
