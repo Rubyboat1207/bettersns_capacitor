@@ -28,6 +28,12 @@ const pageconfigs = {
     "postmatch": {
         orientation: "portrait",
     },
+    "robot": {
+        orientation: "portrait",
+    },
+    "scoring": {
+        orientation: "portrait",
+    }
 }
 
 // This is a generic function for going to a page, and locking the screen orientation accordingly
@@ -136,7 +142,9 @@ addEventListener("load", () => {
 
     //version number, current game
     const version = "1.0 Charged Up";
-    document.getElementById("version").innerHTML = version;
+    if(document.getElementById("version")) {
+        document.getElementById("version").innerHTML = version;
+    }
 
     const display = document.getElementById("alliance-display");
     if (display) {
@@ -153,37 +161,45 @@ addEventListener("load", () => {
 })
 
 export function clearData() {
-    window.localStorage.clear();
-    window.location.reload();
+    window.localStorage.removeItem("scouter");
+    window.localStorage.removeItem("teamName");
+    window.localStorage.removeItem("teamNumber");
+    window.localStorage.removeItem("match");
+    window.localStorage.removeItem("preload");
+    window.localStorage.removeItem("noShow");
+    window.localStorage.removeItem("alliance");
+    window.localStorage.removeItem("auton-location");
+    window.localStorage.removeItem("auton-charged");
+    window.localStorage.removeItem("auton-attempted_place");
+    window.localStorage.removeItem("teleop-location");
+    window.localStorage.removeItem("teleop-charged");
+    window.localStorage.removeItem("teleop-attempted_place");
+    window.localStorage.removeItem("notes");
+    window.localStorage.removeItem("GeneralRating");
+    window.localStorage.removeItem("Teamwork");
+    window.localStorage.removeItem("Defense");
+    window.localStorage.removeItem("Offense");
+    window.localStorage.removeItem("points");
+    window.localStorage.removeItem("penalties");
+    window.localStorage.removeItem("final-score");
+    window.localStorage.removeItem("rank-points");
 }
 
    // -- Notes --
-   const notes = document.getElementById("notes-container");
-   const notesbutton = document.getElementById("notes-button");
-   if (notes) {
-       notes.value = window.localStorage.getItem("notes");
-       notes.addEventListener("input", (element) => {
-           window.localStorage.setItem("notes", element.target.value);
-       });
-       notesbutton.addEventListener("click", () => {
-           notes.classList.toggle("hidden");
-           if(!notes.classList.contains("hidden")) {
-               notes.focus();
-               notesbutton.children[0].innerHTML = '&lt;&lt;'
-           }else {
-               notesbutton.children[0].innerHTML = '&gt;&gt;'
-           }
-       });
-   }
-
-
- /*  Network.addListener('networkStatusChange', status => {
-    const wifi = document.getElementsByClassName("wifi-req")
-    for(let i = 0; i < wifi.length; i++) {
-        if(status.connected) {
-            wifi[i].classList.remove("disabled");
+const notes = document.getElementById("notes-container");
+const notesbutton = document.getElementById("notes-button");
+if (notes) {
+    notes.value = window.localStorage.getItem("notes");
+    notes.addEventListener("input", (element) => {
+        window.localStorage.setItem("notes", element.target.value);
+    });
+    notesbutton.addEventListener("click", () => {
+        notes.classList.toggle("hidden");
+        if(!notes.classList.contains("hidden")) {
+            notes.focus();
+            notesbutton.children[0].innerHTML = '&lt;&lt;'
         }else {
-            wifi[i].classList.add("disabled");
+            notesbutton.children[0].innerHTML = '&gt;&gt;'
         }
-    }
-});*/
+    });
+}
