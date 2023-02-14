@@ -82,8 +82,8 @@ function reloadCube() {
 }
 
 const saveToLocalStorage = () => {
-    window.localStorage.setItem("manip_cone", manipCone);
-    window.localStorage.setItem("manip_cube", manipCube);
+    window.localStorage.setItem("manip_cone", manipCone || false);
+    window.localStorage.setItem("manip_cube", manipCube || false);
     window.localStorage.setItem("arm_description", armDescription);
     window.localStorage.setItem("drivetrain_design", drivetrain);
     window.localStorage.setItem("agility_rating", agilityRating);

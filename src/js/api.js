@@ -1,5 +1,6 @@
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
+import { base_url } from "./constants.js";
 import axios from "axios";
 
 function gatherData() {
@@ -46,12 +47,12 @@ function gatherData() {
       rank_points: window.localStorage.getItem("rank-points"),
     },
     robot_attributes: {
-      arm_design: window.localStorage.getItem("arm_description"),
-      drive_style: window.localStorage.getItem("drivetrain_design"),
-      agility: window.localStorage.getItem("agility_rating"),
-      speed: window.localStorage.getItem("speed_rating"),
-      intake_containables: `${window.localStorage.getItem("manip_cone")},${window.localStorage.getItem("manip_cube")}`,
-      color: window.localStorage.getItem("color") || "metalic",
+      arm_design: window.localStorage.getItem("arm_description") || '',
+      drive_style: window.localStorage.getItem("drivetrain_design") || '',
+      agility: window.localStorage.getItem("agility_rating") || '',
+      speed: window.localStorage.getItem("speed_rating") || '',
+      intake_containables: `${window.localStorage.getItem("manip_cone") ? 'cone' : 'no cone'} & ${window.localStorage.getItem("manip_cube") ? 'cube' : 'no cube'}`,
+      color: window.localStorage.getItem("color") || "metalic" || '',
     }
   };
 }
@@ -139,6 +140,7 @@ export async function uploadDataObject(json) {
     if (response.status != 200) {
       return false;
     }
+    console.log("returning well")
     return await response.data;
   }catch {
     return false;
@@ -147,11 +149,11 @@ export async function uploadDataObject(json) {
 
 export async function uploadAllData() {
   for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
-    console.log(JSON.stringify(item));
-    if(!uploadDataObject(item)) {
+    if((await uploadDataObject(item)) != {"message": "Succeed with no errors"}) {
       return false;
     }
   }
+  return true
 }
 
 export async function submitDataFile(file) {
@@ -187,4 +189,26 @@ export async function uploadCachedData() {
     directory: Directory.Documents,
     encoding: Encoding.UTF8,
   });
+}
+
+export async function submitReport(reporter, contact, msg) {
+  console.log("damnit i tried ok...")
+  try {
+    await axios({
+      method: "post",
+      url: base_url + "feedback",
+      data: JSON.stringify({
+          author: reporter,
+          contact: contact,
+          message: msg
+      }),
+      headers: {
+          "Content-Type": "application/json",
+      },
+    });
+    return true;
+  }catch {
+    return false;
+  }
+  
 }

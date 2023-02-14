@@ -6,7 +6,7 @@ addEventListener("load", () => {
     document.getElementById("feedback").addEventListener("click", () => { goPage("feedback") })
 
     document.getElementById("upload").addEventListener("click", () => {
-        if(uploadAllData()) {
+        if(uploadAllData() === true) {
             window.localStorage.removeItem("requestCache");
         }
     })

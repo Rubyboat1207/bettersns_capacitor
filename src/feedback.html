@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./css/feedback.css" />
 
   <script type="module" src="./js/script.js"></script>
-  <script type="modPule" src="./js/feedback.js"></script>
+  <script type="module" src="./js/feedback.js"></script>
 </head>
 
 <body>
@@ -24,10 +24,16 @@
         <div class="inField">
           <input id="reporterName" type="text" placeholder="ex. John Doe"/>
         </div>
+        <div class="reportContact">
+          <h1>Contact</h1>
+        </div>
+        <div class="inField">
+          <input id="reporterContact" type="text" placeholder="Phone, discord, or email, etc. (optional)"/>
+        </div>
         <div>
           <h1 class="messageText">Message:</h1>
           <div class="box">
-            <textarea id="txtInput" class="txtInput" rows="4" cols="50"></textarea>
+            <textarea id="txtInput" class="txtInput" rows="4" cols="50" placeholder="Whatever you want to tell us! Do you have a cool suggestion? Did you find a bug for us to squash? Or just wanna chat? Just put a message here."></textarea>
           </div> 
           <button class="back" id="back">Back</button>
         </div>

@@ -33,6 +33,12 @@ const pageconfigs = {
     },
     "scoring": {
         orientation: "portrait",
+    },
+    "feedback": {
+        orientation: "portrait",
+    },
+    "credits": {
+        orientation: "portrait",
     }
 }
 
@@ -189,7 +195,8 @@ export function clearData() {
     window.localStorage.removeItem("speed_rating");
     window.localStorage.removeItem("manip_cone");
     window.localStorage.removeItem("manip_cube");
-    window.localStorage.removeItem("color");
+    window.localStorage.removeItem("left_community");
+    window.localStorage.removeItem("moved");
 }
 
    // -- Notes --
