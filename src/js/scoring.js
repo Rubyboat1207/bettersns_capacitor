@@ -5,7 +5,7 @@ addEventListener("load", () => {
     document.getElementById("upload").addEventListener("click", () => {
         saveToLocalStorage();
         saveReqToLocal();
-        writeDataToFile();
+        // writeDataToFile();
         clearData();
         uploadAllData();
         goPage("index");
@@ -14,7 +14,7 @@ addEventListener("load", () => {
     document.getElementById("save").addEventListener("click", () => {
         saveToLocalStorage();
         saveReqToLocal();
-        writeDataToFile();
+        // writeDataToFile();
         clearData();
         goPage("index");
     });
