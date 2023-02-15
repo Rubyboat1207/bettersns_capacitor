@@ -9,6 +9,7 @@ function gatherData() {
       author: window.localStorage.getItem("scouter"),
       teamid: window.localStorage.getItem("teamNumber"),
       match: window.localStorage.getItem("match"),
+      startingPos: window.localStorage.getItem("startingPos"),
       preload:
         window.localStorage.getItem("preload") == "cone" ||
         window.localStorage.getItem("preload") == "cube",

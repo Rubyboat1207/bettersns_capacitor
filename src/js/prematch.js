@@ -4,7 +4,7 @@ import dcone_selected from '../assets/imgs/cone_selected.svg';
 import dcube from '../assets/imgs/cube.svg';
 import dcube_selected from '../assets/imgs/cube_selected.svg';
 
-let scouter, team, teamNumber, match, preload, noShow, cone, cube;
+let scouter, team, teamNumber, match, preload, noShow, cone, cube, startingPos;
 addEventListener("load", () => {
     scouter = document.getElementById("scouter");
     team = document.getElementById("teamName");
@@ -20,6 +20,9 @@ addEventListener("load", () => {
         cone.setAttribute("src", cone.parentElement.getAttribute("select-value") == "cone" ? dcone : dcone_selected);
         cube.setAttribute("src", dcube);
     });
+
+    startingPos = document.getElementById("startingPos");
+
     cube = document.getElementById("cube");
     cube.addEventListener("click", () => {
         cube.setAttribute("src", cube.parentElement.getAttribute("select-value") == "cube" ? dcube : dcube_selected);
@@ -55,12 +58,14 @@ function formIsValid() {
 function saveToLocalStorage() {
     window.localStorage.setItem("scouter", scouter.value);
     window.localStorage.setItem("teamNumber", teamNumber.value);
+    window.localStorage.setItem("startingPos", startingPos.value);
     window.localStorage.setItem("match", match.value);
     window.localStorage.setItem("noShow", noShow.classList.contains("checked"));
     window.localStorage.setItem("preload", preload.getAttribute("select-value"));
 }
 
 function loadFromLocalStorage() {
+    startingPos.value = window.localStorage.getItem("startingPos");
     scouter.value = window.localStorage.getItem("scouter");
     teamNumber.value = window.localStorage.getItem("teamNumber");
     match.value = window.localStorage.getItem("match");

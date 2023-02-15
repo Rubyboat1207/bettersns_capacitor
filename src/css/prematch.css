@@ -60,7 +60,7 @@ span {
     left: 10;
     top: 80px;
 }
-
+ 
 .dropdown>select {
     background: #49505D;
     border: 5px solid #6D7C9A;
@@ -70,27 +70,26 @@ span {
     width: 34vw;
     height: 5vh;
     font-size: 30px;
-  }
-  
-  .dropdown-arrow {
+}
+
+.dropdown-arrow {
     background: #3A3C49;
     border: 5px solid #6D7C9A;
     border-radius: 4px;
     transform: rotate(-180deg);
-  }
-  
-  .dropdown-options {
-    font-family: Regular;
+}
+
+.dropdown-options {
     background: #49505D;
     border: 7px solid #6D7C9A;
     border-radius: 3px;
-  }
-  
-  .dropdown option {
+}
+
+.dropdown option {
     font-family: Regular;
     color: white;
-  }
-  
+}
+
 #roboRange .line {
     background-color: white;
     width: 105%;
