@@ -8,12 +8,12 @@
 
 .inField {
     margin-top: 2vh;
-    
+
 }
 
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
 .toggles {
     margin-top: 10vh;
@@ -52,15 +52,42 @@ span {
     cursor: pointer;
 }
 
-.sliderbackground{
-    width: 100%; 
+.sliderbackground {
+    width: 100%;
     transform: rotate(90deg);
     background-position-x: center;
     position: relative;
     left: 10;
     top: 80px;
-    
+}
+ 
+.dropdown>select {
+    background: #49505D;
+    border: 5px solid #6D7C9A;
+    border-radius: 6px;
+    font-family: Regular;
+    color: white;
+    width: 34vw;
+    height: 5vh;
+    font-size: 30px;
+}
 
+.dropdown-arrow {
+    background: #3A3C49;
+    border: 5px solid #6D7C9A;
+    border-radius: 4px;
+    transform: rotate(-180deg);
+}
+
+.dropdown-options {
+    background: #49505D;
+    border: 7px solid #6D7C9A;
+    border-radius: 3px;
+}
+
+.dropdown option {
+    font-family: Regular;
+    color: white;
 }
 
 #roboRange .line {
@@ -70,17 +97,16 @@ span {
     margin: 0.5vh 0 0.5vh 0;
     border-radius: 100px;
 }
-    
 
 .slidecontainer {
-    width: 100%; 
-  }
-  
-  .slider {
-    -webkit-appearance: none;  
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
     appearance: none;
-    width: 129px; 
-    height: 44px; 
+    width: 129px;
+    height: 44px;
     scale: 50px;
     transform: rotate(90deg);
     position: relative;
@@ -90,37 +116,37 @@ span {
     background-size: 150px 150px;
     background-position-y: center;
     opacity: 1;
-    -webkit-transition: .2s; 
+    -webkit-transition: .2s;
     transition: opacity .2s;
-  }
-    
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; 
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
     background-image: url('../assets/imgs/sliderdot.png');
     scale: 44px;
-    width: 44px; 
-    height: 44px; 
+    width: 44px;
+    height: 44px;
     position: relative;
     bottom: 10px;
     left: 15px;
     background-position-x: center;
     background-position-y: center;
-    background-attachment: scroll;  
+    background-attachment: scroll;
     appearance: none;
 }
 
 .slider::-moz-range-thumb {
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
     background-image: url('../assets/imgs/sliderdot.png');
     scale: 44px;
-    width: 44px; 
-    height: 44px; 
+    width: 44px;
+    height: 44px;
     position: relative;
     bottom: 10px;
     left: 15px;
     background-position-x: center;
     background-position-y: center;
-    background-attachment: scroll;  
+    background-attachment: scroll;
     appearance: none;
 }

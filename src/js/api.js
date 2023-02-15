@@ -9,6 +9,7 @@ function gatherData() {
       author: window.localStorage.getItem("scouter"),
       teamid: window.localStorage.getItem("teamNumber"),
       match: window.localStorage.getItem("match"),
+      startingPos: window.localStorage.getItem("startingPos"),
       preload:
         window.localStorage.getItem("preload") == "cone" ||
         window.localStorage.getItem("preload") == "cube",
@@ -76,7 +77,9 @@ export function saveReqToLocal() {
 export async function writeDataToFile() {
   console.log('writing data to file')
   if (Capacitor.isNativePlatform()) {
-    const path = `/savedata/${new Date().getFullYear()}}/${new Date().getMonth()}/${new Date().getDate()}/${new Date().getSeconds()}.json}}`;
+    let date = new Date();
+    console.log(date);
+    const path = `/savedata/${date.getFullYear()}}/${date.getMonth()}/${date.getDate()}/${new Date().getSeconds()}.json}}`;
     await Filesystem.writeFile({
       path: path,
       data: JSON.stringify(gatherData()),
