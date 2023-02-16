@@ -2,6 +2,8 @@
 // apolgies for anyone who has to read this, not my best work.
 // rewriting this in react would be a good idea, but I don't have the time
 
+import { game, version } from "./constants";
+
 // lets keep the fact that this is a mess a secret, it looks nice from the outside
 
 let red;
@@ -147,9 +149,8 @@ addEventListener("load", () => {
     }
 
     //version number, current game
-    const version = "1.0 Charged Up";
     if(document.getElementById("version")) {
-        document.getElementById("version").innerHTML = version;
+        document.getElementById("version").innerHTML = version + ' ' + game;
     }
 
     const display = document.getElementById("alliance-display");
@@ -201,19 +202,22 @@ export function clearData() {
 
    // -- Notes --
 const notes = document.getElementById("notes-container");
-const notesbutton = document.getElementById("notes-button");
-if (notes) {
-    notes.value = window.localStorage.getItem("notes");
-    notes.addEventListener("input", (element) => {
-        window.localStorage.setItem("notes", element.target.value);
-    });
-    notesbutton.addEventListener("click", () => {
-        notes.classList.toggle("hidden");
-        if(!notes.classList.contains("hidden")) {
-            notes.focus();
-            notesbutton.children[0].innerHTML = '&lt;&lt;'
-        }else {
-            notesbutton.children[0].innerHTML = '&gt;&gt;'
-        }
-    });
+if(notes) {
+    const notesbutton = document.getElementById("notes-button");
+    if (notes) {
+        notes.value = window.localStorage.getItem("notes");
+        document.getElementById("notes").addEventListener("change", (element) => {
+            window.localStorage.setItem("notes", element.target.value);
+        });
+        notesbutton.addEventListener("click", () => {
+            notes.classList.toggle("hidden");
+            if(!notes.classList.contains("hidden")) {
+                notes.focus();
+                notesbutton.children[0].innerHTML = '&lt;&lt;'
+            }else {
+                notesbutton.children[0].innerHTML = '&gt;&gt;'
+            }
+        });
+    }
+    document.getElementById("notes").value = window.localStorage.getItem("notes");
 }

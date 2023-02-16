@@ -17,7 +17,7 @@
 }
 
 .wifi_req {
-    margin-top: 15vh;
+    margin-top: 8vh;
     gap: 2vh;
 }
 
@@ -25,4 +25,8 @@ span {
     font-family: regular;
     color: white;
     font-size: 1.75em;
+}
+
+.clear {
+    margin-top: 15px;
 }

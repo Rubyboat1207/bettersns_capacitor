@@ -46,6 +46,7 @@ button {
 }
 
 body {
+  width: 100%;
   background-color: #212229;
 }
 
@@ -426,3 +427,4 @@ checkbox {
   background: url('../assets/imgs/ratingdot.svg');
   cursor: pointer;
 }
+

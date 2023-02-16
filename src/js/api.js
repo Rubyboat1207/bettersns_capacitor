@@ -3,6 +3,27 @@ import { Capacitor } from "@capacitor/core";
 import { base_url } from "./constants.js";
 import axios from "axios";
 
+const unknown_error_replacements = [
+  'Mystical Cat stole my potions',
+  'Natalie forgot how to add semicolons',
+  'The ancient runes werent decypherable',
+  'Colin let the request commit to master',
+  'Someone forgot to pay off the parenthesis police',
+  'Aahanna used the wrong set of braces',
+  'Rudy accidentally forgot to implement an error message',
+  'The muffin man did not deliver the pancakes',
+  'The dinosaurs came back to take my leftovers',
+  'The programming team was busy talking',
+  'Josh distracted the api server',
+  'The error went to get milk and never came back',
+  'Joseph crossed the beams',
+  'The request went to racetrack without telling us',
+  'Han shot first',
+  'The request ran a red light',
+  'The request went 70 in a 40',
+  'Someone confused java and javascript',
+]
+
 function gatherData() {
   return {
     prematch: {
@@ -141,22 +162,25 @@ export async function uploadDataObject(json) {
       },
     });
     if (response.status != 200) {
+      alert('Upload failed due to server error: ' + ((await response.data).message || (unknown_error_replacements[Math.round(Math.random() * (unknown_error_replacements.length - 1))] + ' (the error is unknown)')))
       return false;
     }
     console.log("returning well")
     return await response.data;
   }catch {
+    alert('Upload failed because server may not be online')
     return false;
   }
 }
 
 export async function uploadAllData() {
   for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
-    if((await uploadDataObject(item)) != {"message": "Succeed with no errors"}) {
+    if((await uploadDataObject(item)) !== true) {
       return false;
     }
   }
-  return true
+  alert('Upload succeeded with no errors')
+  return true;
 }
 
 export async function submitDataFile(file) {
