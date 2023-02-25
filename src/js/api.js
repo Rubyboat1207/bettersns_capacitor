@@ -22,6 +22,14 @@ const unknown_error_replacements = [
   'The request ran a red light',
   'The request went 70 in a 40',
   'Someone confused java and javascript',
+  'Nata;ie made a spelling aerror',
+  'The programming team was busy making fun of natalie',
+  'Cope',
+  'Congradulations, you broke the code. You diserve an award. The awrd is jail time. Potentially the death penalty. Depends on Colins mood today',
+  'Error 405',
+  'The waffle house has closed',
+  'The waffle house has found it\'s new host',
+  ''
 ]
 
 function gatherData() {
