@@ -221,3 +221,14 @@ if(notes) {
     }
     document.getElementById("notes").value = window.localStorage.getItem("notes");
 }
+
+
+export function checkForStringNullOtherwiseReturn(str, preferedValue) {
+    if(str === null) {
+        return preferedValue;
+    }
+    if(str === 'null') {
+        return preferedValue;
+    }
+    return str;
+}

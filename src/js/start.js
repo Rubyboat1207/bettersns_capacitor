@@ -21,6 +21,16 @@ addEventListener("load", () => {
             return;
         }
         if(confirm('Are you sure you want to clear cache')) {
+            try {
+                let cache = JSON.parse(window.localStorage.getItem("requestCache"));
+                if(cache.brokenRequests.length > 0) {
+                    if(!confirm('this will also destroy previously saved corrupted data, do you still want to continue?')) {
+                        return;
+                    }
+                }
+            }catch(e) {
+                
+            }
             window.localStorage.removeItem("requestCache");
         }
     })

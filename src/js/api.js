@@ -2,6 +2,7 @@ import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 import { base_url } from "./constants.js";
 import axios from "axios";
+import { checkForStringNullOtherwiseReturn } from "./script.js";
 
 const unknown_error_replacements = [
   'Mystical Cat stole my potions',
@@ -71,18 +72,18 @@ function gatherData() {
       Teamwork: window.localStorage.getItem("Teamwork"),
       Defense: window.localStorage.getItem("Defense"),
       Offense: window.localStorage.getItem("Offense"),
-      points: window.localStorage.getItem("points"),
-      penalties: window.localStorage.getItem("penalties"),
-      final_score: window.localStorage.getItem("final-score"),
-      rank_points: window.localStorage.getItem("rank-points"),
+      points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("points"), null),
+      penalties: checkForStringNullOtherwiseReturn(window.localStorage.getItem("penalties"), null),
+      final_score: checkForStringNullOtherwiseReturn(window.localStorage.getItem("final-score"), null),
+      rank_points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("rank-points"), null),
     },
     robot_attributes: {
-      arm_design: window.localStorage.getItem("arm_description") || '',
-      drive_style: window.localStorage.getItem("drivetrain_design") || '',
-      agility: window.localStorage.getItem("agility_rating") || '',
-      speed: window.localStorage.getItem("speed_rating") || '',
-      intake_containables: `${window.localStorage.getItem("manip_cone") ? 'cone' : 'no cone'} & ${window.localStorage.getItem("manip_cube") ? 'cube' : 'no cube'}`,
-      color: window.localStorage.getItem("color") || "metalic" || '',
+      arm_design: checkForStringNullOtherwiseReturn(window.localStorage.getItem("arm_description"), null),
+      drive_style: checkForStringNullOtherwiseReturn(window.localStorage.getItem("drivetrain_design"), null),
+      agility: checkForStringNullOtherwiseReturn(window.localStorage.getItem("agility_rating"), null),
+      speed: checkForStringNullOtherwiseReturn(window.localStorage.getItem("speed_rating"), null),
+      intake_containables: checkForStringNullOtherwiseReturn(`${window.localStorage.getItem("manip_cone") ? 'cone' : 'no cone'} & ${window.localStorage.getItem("manip_cube") ? 'cube' : 'no cube'}`),
+      color: checkForStringNullOtherwiseReturn(window.localStorage.getItem("color") || "metalic")
     }
   };
 }
@@ -90,11 +91,21 @@ function gatherData() {
 export function saveReqToLocal() {
   let json = gatherData()
   console.log("gatherd")
-  let reqList = {requests: []};
+  let reqList = {requests: [], brokenRequests: []};
   
 
   if(window.localStorage.getItem("requestCache")) {
-    reqList = JSON.parse(window.localStorage.getItem("requestCache"));
+    try {
+      reqList = JSON.parse(window.localStorage.getItem("requestCache"));
+    }catch {
+      if(confirm("request cache is corrupted, would you like to override it?")) {
+        if(!reqList.hasOwnProperty('brokenRequests')) {
+          reqList.brokenRequests = [];
+        }
+        reqList.brokenRequests.push(reqList.requests);
+        reqList.requests = [];
+      }
+    }
   }
 
 
@@ -150,7 +161,7 @@ export async function uploadData() {
   console.log(JSON.stringify({ data: gatherData() }));
   const response = await axios({
     method: "post",
-    url: "http://localhost:1337/api/v1/form",
+    url: base_url + "form",
     data: JSON.stringify({ data: gatherData() }),
     headers: {
       "Content-Type": "application/json",
@@ -163,7 +174,7 @@ export async function uploadDataObject(json) {
   try {
     const response = await axios({
       method: "post",
-      url: "http://localhost:1337/api/v1/form",
+      url: base_url + "form",
       data: JSON.stringify({data: json}),
       headers: {
         "Content-Type": "application/json",
@@ -175,8 +186,13 @@ export async function uploadDataObject(json) {
     }
     console.log("returning well")
     return await response.data;
-  }catch {
-    alert('Upload failed because server may not be online')
+  }catch(e) {
+    if(e.code == 'ERR_BAD_RESPONSE') {
+      alert('The server had trouble parsing your request:\n\n' + e.response.data)
+    }else {
+      alert('Upload failed because server may not be online')
+    }
+    console.log(e)
     return false;
   }
 }
@@ -199,7 +215,7 @@ export async function submitDataFile(file) {
   });
   console.log(data);
   const request = new XMLHttpRequest();
-  const url = "localhost:1337/post";
+  const url = base_url + "post";
   request.open("POST", url, true);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify(data));
@@ -227,7 +243,6 @@ export async function uploadCachedData() {
 }
 
 export async function submitReport(reporter, contact, msg) {
-  console.log("damnit i tried ok...")
   try {
     await axios({
       method: "post",
