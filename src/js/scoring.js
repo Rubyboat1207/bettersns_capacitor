@@ -2,22 +2,22 @@ import { goPage, clearData } from "./script";
 import { saveReqToLocal, uploadAllData, uploadData, writeDataToFile } from "./api"
 
 addEventListener("load", () => {
-    document.getElementById("upload").addEventListener("click", () => {
-        saveToLocalStorage();
-        saveReqToLocal();
-        // writeDataToFile();
-        clearData();
-        uploadAllData();
-        goPage("index");
-    });
+  document.getElementById("upload").addEventListener("click", () => {
+    saveToLocalStorage();
+    saveReqToLocal();
+    // writeDataToFile();
+    clearData();
+    uploadAllData();
+    goPage("index");
+  });
 
-    document.getElementById("save").addEventListener("click", () => {
-        saveToLocalStorage();
-        saveReqToLocal();
-        // writeDataToFile();
-        clearData();
-        goPage("index");
-    });
+  document.getElementById("save").addEventListener("click", () => {
+    saveToLocalStorage();
+    saveReqToLocal();
+    // writeDataToFile();
+    clearData();
+    goPage("index");
+  });
 })
 
 
@@ -43,7 +43,7 @@ export function saveToLocalStorage() {
 }
 
 function numberOrNothing(value) {
-  if(Number.isNaN(value) == true) {
+  if (Number.isNaN(value) == true) {
     return ''
   }
   return value;
@@ -62,36 +62,43 @@ function loadFromLocalStorage() {
   ));
 }
 
+
+function formIsValid() {
+  if (window.localStorage.getItem("points") == null || isNaN()) {
+    alert("You think you're funny, huh? You think you're funny saying 'letter' to a number question? I bet you think you're really witty saying that rehashed developer torture again. Well you aren't. You aren't funny. You aren't hilarious in the slightest. I didn't laugh. I didn't grin, I didn't even exhale out of my nose. Your joke wasn't funny. Your joke was [GRACSIOUS PROFESSINALISM]. It's stale and [GRACSIOUS PROFESSINALISM]. If you're going to make a joke, make an original one or at least improve the one you're taking. This was low effort. Step up your game, or just don't make jokes in the scouting app at all.")
+    return false;
+  }
+  if (window.localStorage.getItem("penalties") == null || isNaN()) {
+    alert("You think you're funny, huh? You think you're funny saying 'letter' to a number question? I bet you think you're really witty saying that rehashed developer torture again. Well you aren't. You aren't funny. You aren't hilarious in the slightest. I didn't laugh. I didn't grin, I didn't even exhale out of my nose. Your joke wasn't funny. Your joke was [GRACSIOUS PROFESSINALISM]. It's stale and [GRACSIOUS PROFESSINALISM]. If you're going to make a joke, make an original one or at least improve the one you're taking. This was low effort. Step up your game, or just don't make jokes in the scouting app at all.")
+    return false;
+  }
+  if (window.localStorage.getItem("final-score") == null || isNaN()) {
+    alert("You think you're funny, huh? You think you're funny saying 'letter' to a number question? I bet you think you're really witty saying that rehashed developer torture again. Well you aren't. You aren't funny. You aren't hilarious in the slightest. I didn't laugh. I didn't grin, I didn't even exhale out of my nose. Your joke wasn't funny. Your joke was [GRACSIOUS PROFESSINALISM]. It's stale and [GRACSIOUS PROFESSINALISM]. If you're going to make a joke, make an original one or at least improve the one you're taking. This was low effort. Step up your game, or just don't make jokes in the scouting app at all.")
+    return false;
+  }
+  if (window.localStorage.getItem("rank-points") == null || isNaN()) {
+    alert("You think you're funny, huh? You think you're funny saying 'letter' to a number question? I bet you think you're really witty saying that rehashed developer torture again. Well you aren't. You aren't funny. You aren't hilarious in the slightest. I didn't laugh. I didn't grin, I didn't even exhale out of my nose. Your joke wasn't funny. Your joke was [GRACSIOUS PROFESSINALISM]. It's stale and [GRACSIOUS PROFESSINALISM]. If you're going to make a joke, make an original one or at least improve the one you're taking. This was low effort. Step up your game, or just don't make jokes in the scouting app at all.")
+    return false;
+  }
+  return true;
+}
+function nextPage() {
+  if (formIsValid()) {
+    saveToLocalStorage();
+    goPage("teleop")
+  }
+}
+
 addEventListener("load", function () {
   document.getElementById("trash").addEventListener("click", () => {
     clearData();
     goPage("index");
   });
-  document.getElementById("back").addEventListener("click", () => {
+  document.getElementById("back").addEventListener("click", nextPage, () => {
     saveToLocalStorage();
     goPage("robot");
   });
   points = document.getElementById("points");
   penalties = document.getElementById("penalties");
   total = document.getElementById("final-score");
-  //on points change, update the total
-  points.addEventListener("change", () => {
-    let val = parseInt(points.value);
-    if (penalties.value) {
-      val -= parseInt(penalties.value);
-    }
-    console.log(val)
-    if(val == NaN) {
-      total.value = '';
-      return;
-    }
-    total.value = val;
-  });
-  //on penalties change, update the total, but only if points have been entered
-  penalties.addEventListener("change", () => {
-    if (points.value) {
-      total.value = parseInt(points.value) - parseInt(penalties.value);
-    }
-  });
-  loadFromLocalStorage();
-});
+})

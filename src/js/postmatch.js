@@ -18,8 +18,34 @@ function loadFromLocalStorage() {
 
 
 
+function formIsValid() {
+    if (window.localStorage.getItem("GeneralRating") == null) {
+        alert("General Rating is set to false. good job");
+        return false;
+    }
+    if (window.localStorage.getItem("Teamwork") == null) {
+        alert("Teamwork is set to false. good job");
+        return false;
+    }
+    if (window.localStorage.getItem("Defense") == null) {
+        alert("Defense is set to false. good job");
+        return false;
+    }
+    if(window.localStorage.getItem("Offense") == null) {
+        alert("Offense is set to false. good job");
+    }
+    return true;
+}
+
+function nextPage() {
+    if (formIsValid()) {
+        saveToLocalStorage();
+        goPage("robot")
+    }
+}
+
 addEventListener('load', function () {
-    document.getElementById("scoring").addEventListener("click", () => {
+    document.getElementById("scoring").addEventListener("click", nextPage, () => {
         saveToLocalStorage();
         goPage("robot");
     });

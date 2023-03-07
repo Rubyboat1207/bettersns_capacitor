@@ -13,7 +13,7 @@ let armDescription = '';
 let agilityRating = 3;
 let speedRating = 3;
 
-document.getElementById("scoring").addEventListener("click", () => { goPage("scoring"); saveToLocalStorage(); })
+document.getElementById("scoring").addEventListener("click", nextPage, () => { goPage("scoring"); saveToLocalStorage(); })
 document.getElementById("back").addEventListener("click", () => { goPage("postmatch") })
 const cube = document.getElementById("cube");
 
@@ -22,12 +22,33 @@ cube.addEventListener("click", () => {
     reloadCube();
 })
 
+function nextPage() {
+    if (formIsValid()) {
+        saveToLocalStorage();
+        goPage("teleop")
+    }
+}
+
+function formIsValid() {
+    if (window.localStorage.getItem("drivetrains") == null) {
+        alert("bro fix that goofy ahh drivetrain answer")
+        return false;
+    }
+    if (window.localStorage.getItem("fast") == null) {
+        alert("please fix speed input or answer")
+        return false;
+    }
+    return true;
+}
+
+
+
+
 const cone = document.getElementById("cone");
 cone.addEventListener("click", () => {
     manipCone = !manipCone;
     reloadCone();
 })
-
 
 const manip = document.getElementById("manip");
 manip.addEventListener("change", (c) => {
@@ -41,9 +62,9 @@ drivetrains.addEventListener("change", () => {
     drivetrain = drivetrains.value;
     updateDrivetrain();
 })
-for(let i = 0; i < drivetrains.children.length; i++) {
+for (let i = 0; i < drivetrains.children.length; i++) {
     const elem = drivetrains.children[i];
-    if(elem.value == 'unsure') {
+    if (elem.value == 'unsure') {
         continue;
     }
     acceptable_drivetrains.push(elem.value);
@@ -51,10 +72,10 @@ for(let i = 0; i < drivetrains.children.length; i++) {
 function updateDrivetrain() {
     console.log(drivetrain)
     console.log(acceptable_drivetrains)
-    if(!acceptable_drivetrains.includes(drivetrain)) {
+    if (!acceptable_drivetrains.includes(drivetrain)) {
         unsure.classList.remove('invis')
-    }else {
-        if(!unsure.classList.contains('invis')) {
+    } else {
+        if (!unsure.classList.contains('invis')) {
             unsure.classList.add('invis')
         }
     }
@@ -102,9 +123,9 @@ const loadFromLocalStorage = () => {
     reloadCube();
     fast.value = speedRating;
     agility.value = agilityRating;
-    if(acceptable_drivetrains.includes(drivetrain)) {
+    if (acceptable_drivetrains.includes(drivetrain)) {
         drivetrains.value = drivetrain;
-    }else {
+    } else {
         drivetrains.value = "unsure";
         document.getElementById("unsure_input").value = drivetrain || '';
     }
