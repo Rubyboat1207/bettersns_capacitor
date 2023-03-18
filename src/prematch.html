@@ -35,10 +35,13 @@
     </div>
     <div class="vertLayout large-section vl_left">
       <div class="vertLayout vl_left">
-        <div class="inField">
+        <div class="inField name">
           <span>Scouter Name</span>
           <div class="line"></div>
           <input type="text" placeholder="ex. John Doe" id="scouter" />
+
+
+          
         </div>
         <!--<div class="inField">
           <span>Team Name</span>
@@ -66,15 +69,6 @@
               <img src="assets/imgs/cone.svg" select-name="cone" id="cone"/>
             </multiselect>
           </div>
-          <div class="dropdown" id="startingPos">            <span>Starting Position</span>
-          <div class="line"></div>
-          <select name="drivetrains">
-            <option value="high">High</option>
-            <option value="mid">Middle</option>
-            <option value="low">Low</option>
-
-          </select>
-        </div>
           <checkbox class="vertLayout" id="noShow">
             <span>No Show</span>
             <div class="line"></div>
@@ -83,6 +77,18 @@
               <div class="knob"></div>
             </div>
           </checkbox>
+        </div>
+        <div class="vertLayout">
+          <div class="dropdown" id="startingPos">
+            <span>Starting Position</span>
+            <div class="line"></div>
+            <select name="drivetrains" id="startingPosVal">
+              <option value="high">Far</option>
+              <option value="mid">Middle</option>
+              <option value="low">Close</option>
+
+            </select>
+          </div>
         </div>
       </div>
       <div class="vertLayout button">

@@ -72,10 +72,10 @@ function gatherData() {
       Teamwork: window.localStorage.getItem("Teamwork"),
       Defense: window.localStorage.getItem("Defense"),
       Offense: window.localStorage.getItem("Offense"),
-      points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("points"), null),
-      penalties: checkForStringNullOtherwiseReturn(window.localStorage.getItem("penalties"), null),
-      final_score: checkForStringNullOtherwiseReturn(window.localStorage.getItem("final-score"), null),
-      rank_points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("rank-points"), null),
+      points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("points"), '-1'),
+      penalties: checkForStringNullOtherwiseReturn(window.localStorage.getItem("penalties"), '-1'),
+      final_score: checkForStringNullOtherwiseReturn(window.localStorage.getItem("points"), '-1'),
+      rank_points: checkForStringNullOtherwiseReturn(window.localStorage.getItem("rank-points"), '-1'),
     },
     robot_attributes: {
       arm_design: checkForStringNullOtherwiseReturn(window.localStorage.getItem("arm_description"), null),
@@ -83,7 +83,8 @@ function gatherData() {
       agility: checkForStringNullOtherwiseReturn(window.localStorage.getItem("agility_rating"), null),
       speed: checkForStringNullOtherwiseReturn(window.localStorage.getItem("speed_rating"), null),
       intake_containables: checkForStringNullOtherwiseReturn(`${window.localStorage.getItem("manip_cone") ? 'cone' : 'no cone'} & ${window.localStorage.getItem("manip_cube") ? 'cube' : 'no cube'}`),
-      color: checkForStringNullOtherwiseReturn(window.localStorage.getItem("color") || "metalic")
+      color: checkForStringNullOtherwiseReturn(window.localStorage.getItem("color") || "metalic"),
+      skipped: window.localStorage.getItem("robot_skipped") || false
     }
   };
 }
@@ -184,7 +185,7 @@ export async function uploadDataObject(json) {
       alert('Upload failed due to server error: ' + ((await response.data).message || (unknown_error_replacements[Math.round(Math.random() * (unknown_error_replacements.length - 1))] + ' (the error is unknown)')))
       return false;
     }
-    console.log("returning well")
+    alert((await response.data).message)
     return await response.data;
   }catch(e) {
     if(e.code == 'ERR_BAD_RESPONSE') {
@@ -198,12 +199,20 @@ export async function uploadDataObject(json) {
 }
 
 export async function uploadAllData() {
+  let uploadedCount = 0;
+
   for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
+    uploadedCount++;
     if((await uploadDataObject(item)) !== true) {
       return false;
     }
   }
-  alert('Upload succeeded with no errors')
+  alert(`Uploaded ${uploadedCount} forms with no errors`)
+  const day = new Date();
+  window.localStorage.setItem('lastUploaded', day.getMonth() + '/' + day.getDay() + '/' + day.getFullYear())
+  let removed = JSON.parse(window.localStorage.getItem("requestCache"));
+  removed.requests = [];
+  window.localStorage.setItem("requestCache", removed)
   return true;
 }
 

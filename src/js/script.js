@@ -168,7 +168,7 @@ addEventListener("load", () => {
 })
 
 export function clearData() {
-    window.localStorage.removeItem("scouter");
+    // window.localStorage.removeItem("scouter");
     window.localStorage.removeItem("teamName");
     window.localStorage.removeItem("teamNumber");
     window.localStorage.removeItem("match");

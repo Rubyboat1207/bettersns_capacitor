@@ -10,10 +10,11 @@ addEventListener("load", () => {
             alert('You have no cached data')
             return;
         }
-        if(uploadAllData() === true) {
-            window.localStorage.removeItem("requestCache");
-            alert('data successfully uploaded')
-        }
+        uploadAllData().then(r => {
+            if(r === true) {
+                alert('data successfully uploaded')
+            }
+        });
     })
     document.getElementById("clear").addEventListener("click", () => {
         if(window.localStorage.getItem("requestCache") == null) {

@@ -1,22 +1,39 @@
 import { goPage, clearData } from "./script";
 import { saveReqToLocal, uploadAllData, uploadData, writeDataToFile } from "./api"
 
+function validate() {
+  if(isNaN(document.getElementById('points').value) || document.getElementById('points').value == '') {
+    return false;
+  }
+  if(isNaN(document.getElementById('penalties').value) || document.getElementById('penalties').value == '') {
+    return false;
+  }
+  if(isNaN(document.getElementById('rank-points').value) || document.getElementById('rank-points').value == '') {
+    return false;
+  }
+  return true;
+}
+
 addEventListener("load", () => {
     document.getElementById("upload").addEventListener("click", () => {
-        saveToLocalStorage();
-        saveReqToLocal();
-        // writeDataToFile();
-        clearData();
-        uploadAllData();
-        goPage("index");
+      saveToLocalStorage();
+      saveReqToLocal();
+      // writeDataToFile();
+      clearData();
+      uploadAllData();
+      goPage("index");
     });
 
     document.getElementById("save").addEventListener("click", () => {
-        saveToLocalStorage();
-        saveReqToLocal();
-        // writeDataToFile();
-        clearData();
-        goPage("index");
+      if(!validate()) {
+        alert('all points fields must be filled out, and must be numerical.')
+        return;
+      }
+      saveToLocalStorage();
+      saveReqToLocal();
+      // writeDataToFile();
+      clearData();
+      goPage("index");
     });
 })
 
@@ -32,10 +49,10 @@ export function saveToLocalStorage() {
     "penalties",
     document.getElementById("penalties").value
   );
-  window.localStorage.setItem(
-    "final-score",
-    document.getElementById("final-score").value
-  );
+  // window.localStorage.setItem(
+  //   "final-score",
+  //   document.getElementById("final-score").value
+  // );
   window.localStorage.setItem(
     "rank-points",
     document.getElementById("rank-points").value
@@ -54,9 +71,9 @@ function loadFromLocalStorage() {
     window.localStorage.getItem("points");
   document.getElementById("penalties").value =
     window.localStorage.getItem("penalties");
-  document.getElementById("final-score").value = numberOrNothing(parseInt(
-    window.localStorage.getItem("final-score")
-  ));
+  // document.getElementById("final-score").value = numberOrNothing(parseInt(
+  //   window.localStorage.getItem("final-score")
+  // ));
   document.getElementById("rank-points").value = numberOrNothing(parseInt(
     window.localStorage.getItem("rank-points")
   ));
@@ -73,24 +90,24 @@ addEventListener("load", function () {
   });
   points = document.getElementById("points");
   penalties = document.getElementById("penalties");
-  total = document.getElementById("final-score");
+  // total = document.getElementById("final-score");
   //on points change, update the total
-  points.addEventListener("change", () => {
-    let val = parseInt(points.value);
-    if (penalties.value) {
-      val -= parseInt(penalties.value);
-    }
-    console.log(val)
-    if(val == NaN) {
-      total.value = '';
-      return;
-    }
-    total.value = val;
-  });
+  // points.addEventListener("change", () => {
+  //   let val = parseInt(points.value);
+  //   if (penalties.value) {
+  //     // val -= parseInt(penalties.value);
+  //   }
+  //   console.log(val)
+  //   if(val == NaN) {
+  //     // total.value = '';
+  //     return;
+  //   }
+  //   total.value = val;
+  // });
   //on penalties change, update the total, but only if points have been entered
   penalties.addEventListener("change", () => {
     if (points.value) {
-      total.value = parseInt(points.value) - parseInt(penalties.value);
+      // total.value = parseInt(points.value) - parseInt(penalties.value);
     }
   });
   loadFromLocalStorage();

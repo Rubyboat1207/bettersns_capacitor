@@ -13,3 +13,5 @@ function updateCacheWithNewValues() {
     document.getElementById('localStorage').value = JSON.stringify(JSON.parse(localStorage.getItem('requestCache')), null, '  ')
 }
 updateCacheWithNewValues();
+
+document.getElementById('day').innerHTML = window.localStorage.getItem('lastUploaded');

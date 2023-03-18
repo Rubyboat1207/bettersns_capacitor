@@ -3,7 +3,7 @@
 }
 
 .button {
-    margin-top: 3vh;
+    margin-top: 26vh;
 }
 
 .trash {
@@ -88,4 +88,19 @@ h2 {
 .rank-points input {
     width: 8vh;
     height: 8vh;
+}
+.rank-points {
+    margin-top: 90px;
+}
+
+.hotfix-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#penalties {
+    background-color: #452c2c;
+    border-color: #844c4c;
 }

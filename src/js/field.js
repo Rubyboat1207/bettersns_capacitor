@@ -45,6 +45,7 @@ function setGridLocation(loc, value) {
     child.classList.remove("cone");
 
     if(type == null) {
+        console.log('null it')
         loc.positive = false;
         child.remove();
         return;
@@ -52,6 +53,8 @@ function setGridLocation(loc, value) {
     loc.positive = true;
     child.setAttribute("src", type == "cube" ? dcube : dcone);
     child.classList.add(`${type}`);
+    console.log('set')
+    console.log(icons_location)
 }
 
 function registerElevatedIcons() {
@@ -102,6 +105,7 @@ function registerFloorIcons() {
             }
 
             if(child == null) {
+                console.log('ch null')
                 setGridLocation(loc, "cube");
                 return;
             }
@@ -118,18 +122,22 @@ function registerFloorIcons() {
 }
 
 export function saveToLocalStorage(prefix) {
+    console.log('test')
+    console.log(icons_location);
     window.localStorage.setItem(`${prefix}-location`, JSON.stringify(icons_location));
     window.localStorage.setItem(`${prefix}-charged`, level);
     window.localStorage.setItem(`${prefix}-attempted_place`, document.getElementById("community-place").classList.contains("checked"));
 }
 
 export function loadFromLocalStorage(prefix) {
+    console.log("test")
     if(!loaded) {
         registerElevatedIcons();
         registerFloorIcons();
     }
     console.log(prefix)
     const loc = JSON.parse(window.localStorage.getItem(`${prefix}-location`));
+    console.log(loc)
     level = window.localStorage.getItem(`${prefix}-charged`) || 0;
     const attempted_place = window.localStorage.getItem(`${prefix}-
     attempted_place`) == "true";
@@ -142,7 +150,11 @@ export function loadFromLocalStorage(prefix) {
         return;
     }
     for(let i = 0; i < loc.length; i++) {
-        if(loc.x != 2) {
+        
+        if(loc[i].y != 2) {
+            if(loc[i].type == null) {
+                continue;
+            }
             setGridLocation(loc[i], loc[i].positive);
         }
         else {
@@ -151,9 +163,10 @@ export function loadFromLocalStorage(prefix) {
     }
 }
 
-let completeCallback = () => {};
+export let completeCallback = () => {};
 
 export function setCallback(callback) {
+    console.log('callback set')
     completeCallback = callback;
 }
 
@@ -179,7 +192,8 @@ addEventListener('load', function() {
         setBatteryCharge(new_charge);
     });
     console.log(icons_location);
-    completeCallback();
+    console.log(completeCallback)
+    
 });
 
 function setBatteryCharge(level) {

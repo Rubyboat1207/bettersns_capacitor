@@ -21,7 +21,7 @@ addEventListener("load", () => {
         cube.setAttribute("src", dcube);
     });
 
-    startingPos = document.getElementById("startingPos");
+    startingPos = document.getElementById("startingPosVal");
 
     cube = document.getElementById("cube");
     cube.addEventListener("click", () => {
@@ -68,7 +68,7 @@ function loadFromLocalStorage() {
     startingPos.value = window.localStorage.getItem("startingPos");
     scouter.value = window.localStorage.getItem("scouter");
     teamNumber.value = window.localStorage.getItem("teamNumber");
-    match.value = window.localStorage.getItem("match");
+    match.value = window.localStorage.getItem("match");``
     if(window.localStorage.getItem("noShow") == "true") {
         noShow.classList.add("checked");
     }

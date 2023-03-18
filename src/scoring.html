@@ -38,24 +38,24 @@
     <div class="vertLayout large-section vl_left">
       <div class="vertLayout">
         <div class="horizLayout scores">
-          <div>
-            <h2>Points</h2>
-            <input class="points" id="points">
+          <div class="hotfix-1">
+            <h2>Total Points</h2>
+            <input class="points" type="number" id="points">
           </div>
-          <div>
-            <h2>Penalties</h2>
-            <input class="penalties" id="penalties">
+          <div  class="hotfix-1">
+            <h2>Penalty Points</h2>
+            <input class="penalties" type="number" id="penalties">
           </div>
         </div>
       </div>
-      <div class="final-score vertLayout">
+      <!--<div class="final-score vertLayout">
         <h2>Final Score</h2>
         <h3>(this should fill itself if you enter the top values)</h3>
         <input id="final-score">
-      </div>
+      </div>-->
       <div class="rank-points vertLayout">
         <h2>Rank Points</h2>
-        <input id="rank-points">
+        <input id="rank-points" type="number">
       </div>
       <div class="vertLayout button">
         <button id="upload">Save and Upload</button>

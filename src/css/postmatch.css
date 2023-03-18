@@ -5,6 +5,9 @@
 .button {
     margin-top: 7vh;
 }
+.button>button {
+    margin-top: 10px;
+}
 
 .trash {
     position: absolute;

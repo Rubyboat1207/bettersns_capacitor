@@ -10,7 +10,8 @@ addEventListener('load', function () {
         saveToLocalStorage("teleop")
         goPage("postmatch");
     });
-    setCallback(() => {
+    // Yes, this is a little bit of a hack, but it works
+    this.setTimeout(() => {
         loadFromLocalStorage("teleop");
-    })
+    }, 500)
 });

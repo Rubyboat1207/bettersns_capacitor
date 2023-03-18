@@ -17,7 +17,9 @@ input[type=number] {
 
 .toggles {
     margin-top: 10vh;
-    width: 80%;
+    width: 70%;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .button {
@@ -35,6 +37,7 @@ span {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-left: 90px;
 }
 
 .preload .line {
@@ -67,7 +70,7 @@ span {
     border-radius: 6px;
     font-family: Regular;
     color: white;
-    width: 34vw;
+    width: 70%;
     height: 5vh;
     font-size: 30px;
 }
@@ -149,4 +152,8 @@ span {
     background-position-y: center;
     background-attachment: scroll;
     appearance: none;
+}
+
+#noShow {
+    padding-right: 90px;
 }

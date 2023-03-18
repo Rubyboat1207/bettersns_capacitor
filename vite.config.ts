@@ -20,7 +20,7 @@ function getconfig() {
           scoring: resolve(__dirname, './src/scoring.html'),
           feedback: resolve(__dirname, './src/feedback.html'),
           credits: resolve(__dirname, './src/credits.html'),
-          dev: resolve(__dirname, './src/dev.html'),
+          dev: resolve(__dirname, './src/devutil.html'),
         },
       },
     },
