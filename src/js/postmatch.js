@@ -38,21 +38,22 @@ function formIsValid() {
 }
 
 function nextPage() {
+    saveToLocalStorage();
     if (formIsValid()) {
-        saveToLocalStorage();
         goPage("robot")
     }
 }
 
-addEventListener('load', function () {
-    document.getElementById("scoring").addEventListener("click", nextPage, () => {
+addEventListener('load', () => {
+    document.getElementById("scoring").addEventListener("click", () => {
         saveToLocalStorage();
-        this.window.localStorage.setItem('robot_skipped', true);
+        window.localStorage.setItem('robot_skipped', true);
+        console.log('hi')
         goPage("scoring");
     });
     document.getElementById("robot").addEventListener("click", () => {
         saveToLocalStorage();
-        goPage("robot");
+        // goPage("robot");
     });
     document.getElementById("back").addEventListener("click", () => {
         saveToLocalStorage("postmatch")

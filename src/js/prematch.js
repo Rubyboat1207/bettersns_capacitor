@@ -40,28 +40,16 @@ function formIsValid() {
         alert("Please enter your name before continuing");
         return false;
     }
-    if (teamNumber.value == "" || !isNaN(teamNumber) || !teamNumber.isInteger()) {
+    if (teamNumber.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a team number before continuing");
         return false;
     }
-    if (match.value == "" || !isNaN(teamNumber) || !teamNumber.isInteger()) {
+    if (match.value == "" || !isNaN(teamNumber)) {
         alert("Please enter a match number before continuing");
         return false;
     }
     if(window.localStorage.getItem("alliance") == null) {
         alert("Please select an alliance color before continuing");
-        return false;
-    }
-    if(window.localStorage.getItem("startingPos") == null || !'high' || !'mid' || !'low') {
-        alert("HOW DID YOU DO THIS")
-        return false;
-    }
-    if(window.localStorage.getItem("Preload") == null){
-        alert("PLEASE FILL IN PRELOAD")
-        return false;
-    }
-    if(window.localStorage.getItem("noShow") == null || !Boolean){
-        alert("PLEASE FILL IN NO SHOW HOW DID YOU BREAK THIS IM ACTUALLY QUESTIONING YOU ABLILITYS AS SCOUTER, THIS WAS A SELECT BUTTON, AND YOU SET IT TO SOMETING ELSE, WHO ARE YOU, WHERE ARE YOU FROM, WHY ARE YOU TOURTUING MY EXISTANCE, YOU CANNOT DO THIS WITHOUT GOING INTO SOME MENU AND MAKING IT NOT EQUAL A BOOLEAN OH MY GOOD, I AM GOING TO CALL THE SCOUTING POLICE good job :)")
         return false;
     }
     return true;

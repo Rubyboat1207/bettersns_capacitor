@@ -17,12 +17,6 @@ function formIsValid() {
     }
     return true;
 }
-function nextPage() {
-    if (formIsValid()) {
-        saveToLocalStorage();
-        goPage("teleop")
-    }
-}
 
 addEventListener('load', function () {
     document.getElementById("back").addEventListener("click", () => {

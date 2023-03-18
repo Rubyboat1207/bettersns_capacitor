@@ -23,21 +23,21 @@ cube.addEventListener("click", () => {
 })
 
 function nextPage() {
+    saveToLocalStorage();
     if (formIsValid()) {
-        saveToLocalStorage();
         goPage("teleop")
     }
 }
 
 function formIsValid() {
-    if (window.localStorage.getItem("drivetrains") == null) {
-        alert("bro fix that goofy ahh drivetrain answer")
-        return false;
-    }
-    if (window.localStorage.getItem("fast") == null) {
-        alert("please fix speed input or answer")
-        return false;
-    }
+    // if (window.localStorage.getItem("drivetrains") == null) {
+    //     alert("bro fix that goofy ahh drivetrain answer")
+    //     return false;
+    // }
+    // if (window.localStorage.getItem("fast") == null) {
+    //     alert("please fix speed input or answer")
+    //     return false;
+    // }
     return true;
 }
 
@@ -103,6 +103,7 @@ function reloadCube() {
 }
 
 const saveToLocalStorage = () => {
+    console.log(drivetrain)
     window.localStorage.setItem("manip_cone", manipCone || false);
     window.localStorage.setItem("manip_cube", manipCube || false);
     window.localStorage.setItem("arm_description", armDescription);
