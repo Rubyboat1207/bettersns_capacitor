@@ -29,7 +29,7 @@ const unknown_error_replacements = [
   'Congradulations, you broke the code. You diserve an award. The awrd is jail time. Potentially the death penalty. Depends on Colins mood today',
   'Error 405',
   'The waffle house has closed',
-  'The waffle house has found it\'s new host',
+  'Natalie loves scouting',
   ''
 ]
 
@@ -93,7 +93,6 @@ export function saveReqToLocal() {
   let json = gatherData()
   console.log("gatherd")
   let reqList = {requests: [], brokenRequests: []};
-  
 
   if(window.localStorage.getItem("requestCache")) {
     try {
@@ -109,9 +108,8 @@ export function saveReqToLocal() {
     }
   }
 
-
   reqList.requests.push(json);
-
+  
   window.localStorage.setItem("requestCache", JSON.stringify(reqList))
 }
 

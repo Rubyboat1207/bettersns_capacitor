@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/prematch.css" />
-    <script type="module" src="./js/script.js"></script>
-    <script type="module" src="./js/prematch.js"></script>
-  </head>
-  <body>
-    <div class="header">
-      <div id="red" class="alliance"><div></div></div>
-      <div id="blue" class="alliance"><div></div></div>
-      <h1>Prematch Info</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/prematch.css" />
+  <script type="module" src="./js/script.js"></script>
+  <script type="module" src="./js/prematch.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div id="red" class="alliance">
+      <div></div>
     </div>
-    <div class="notes hidden" id="notes-container">
-      <div class="notes-outline">
-        <div class="content-container">
-          <h1>Notes</h1>
-          <div class="line"></div>
-          <textarea
-            id="notes"
-            placeholder="ex. Cycle times are slow"
-          ></textarea>
-        </div>
-      </div>
-      <div class="notes-button" id="notes-button">
-        <span>&gt;&gt;</span>
+    <div id="blue" class="alliance">
+      <div></div>
+    </div>
+    <h1>Prematch Info</h1>
+  </div>
+  <div class="notes hidden" id="notes-container">
+    <div class="notes-outline">
+      <div class="content-container">
+        <h1>Notes</h1>
+        <div class="line"></div>
+        <textarea id="notes" placeholder="ex. Cycle times are slow"></textarea>
       </div>
     </div>
     <div class="vertLayout large-section vl_left">
@@ -48,16 +44,10 @@
           <div class="line"></div>
           <input type="text" placeholder="ex. Titan robotics" id="teamName" />
         </div>-->
-        <div class="inField">
-          <span>Team Number</span>
-          <div class="line"></div>
-          <input type="number" placeholder="ex. 5431" id="teamNumber" />
-        </div>
-        <div class="inField">
-          <span>Match Number</span>
-          <div class="line"></div>
-          <input type="number" placeholder="ex. 3" id="match" />
-        </div>
+      <div class="inField">
+        <span>Team Number</span>
+        <div class="line"></div>
+        <input type="number" placeholder="ex. 5431" id="teamNumber" />
       </div>
       <div class="vertLayout">
         <div class="horizLayout toggles">
@@ -94,7 +84,12 @@
       <div class="vertLayout button">
         <button id="auton">Autonomous</button>
       </div>
-      <img src="assets/imgs/back.svg" class="back" id="back"/>
     </div>
-  </body>
+    <div class="vertLayout button">
+      <button id="auton">Autonomous</button>
+    </div>
+    <img src="assets/imgs/back.svg" class="back" id="back" />
+  </div>
+</body>
+
 </html>
