@@ -1,0 +1,5 @@
+- Version number updated to 23.2.1
+- Added ACE in the dev menu
+- Now displays cached count on index page
+- Removed unused buttons
+- Added Testupload for dev

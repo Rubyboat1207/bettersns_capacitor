@@ -4,7 +4,6 @@ addEventListener("load", () => {
     document.getElementById("start").addEventListener("click", () => { goPage("prematch") })
     document.getElementById("source").addEventListener("click", () => { goPage("credits") })
     document.getElementById("feedback").addEventListener("click", () => { goPage("feedback") })
-
     document.getElementById("upload").addEventListener("click", () => {
         if(window.localStorage.getItem("requestCache") == null) {
             alert('You have no cached data')
@@ -44,4 +43,5 @@ addEventListener("load", () => {
             }
         }
     })
+    document.getElementById('cachedCount').innerHTML = JSON.parse(window.localStorage.getItem('requestCache')).requests.length + ' cached value(s)'
 })

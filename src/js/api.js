@@ -1,6 +1,6 @@
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
-import { base_url } from "./constants.js";
+import { base_url, testUpload } from "./constants.js";
 import axios from "axios";
 import { checkForStringNullOtherwiseReturn } from "./script.js";
 
@@ -171,6 +171,9 @@ export async function uploadData() {
 
 export async function uploadDataObject(json) {
   try {
+    if(testUpload) {
+      return true;
+    }
     const response = await axios({
       method: "post",
       url: base_url + "form",
@@ -198,16 +201,22 @@ export async function uploadDataObject(json) {
 
 export async function uploadAllData() {
   let uploadedCount = 0;
-
-  for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
-    uploadedCount++;
-    if((await uploadDataObject(item)) !== true) {
-      return false;
+  try {
+    JSON.parse(window.localStorage.getItem("requestCache"))
+    for(const item of JSON.parse(window.localStorage.getItem("requestCache")).requests) {
+      uploadedCount++;
+      if((await uploadDataObject(item)) !== true) {
+        return false;
+      }
     }
-  }
+  }catch { }
+  
   alert(`Uploaded ${uploadedCount} forms with no errors`)
   const day = new Date();
   window.localStorage.setItem('lastUploaded', day.getMonth() + '/' + day.getDay() + '/' + day.getFullYear())
+  if(uploadedCount == 0) {
+    return true;
+  }
   let removed = JSON.parse(window.localStorage.getItem("requestCache"));
   removed.requests = [];
   window.localStorage.setItem("requestCache", removed)

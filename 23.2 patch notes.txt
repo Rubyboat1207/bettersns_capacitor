@@ -1,0 +1,18 @@
+- Version number updated to 23.2.0
+- Added colin to the credits
+- Added option to go directly to scoring after postmatch, instead of robot attributes
+- Starting position options are now Far, middle, and close
+- Total points field removed
+- Penalties renamed to penalty points
+- Penalty Points no longer subtracts
+- Penalty Points is now colored red
+- All score fields are now number only
+- Preload type no longer clips into the notes button
+- Unknown score now defaults to -1 in api
+- Field now repopulates when going back a page
+- Field no longer ignores the 3rd column when loading from cache
+- Starting Position now correctly saves to api cache
+- Scoring now requires all fields be numbers & not empty
+- Now saves scouter name between forms
+- Cache is no longer automatically deleted, just a debug feature for now
+- Added last uploaded date to developer utilities page

@@ -17,3 +17,7 @@ function updateCacheWithNewValues() {
 updateCacheWithNewValues();
 
 document.getElementById('day').innerHTML = window.localStorage.getItem('lastUploaded');
+
+document.getElementById('exe_ace').addEventListener('click', () => {
+    eval(document.getElementById('ace').value)
+})
