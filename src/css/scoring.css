@@ -104,3 +104,11 @@ h2 {
     background-color: #452c2c;
     border-color: #844c4c;
 }
+
+canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

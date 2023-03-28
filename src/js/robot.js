@@ -13,7 +13,7 @@ let armDescription = '';
 let agilityRating = 3;
 let speedRating = 3;
 
-document.getElementById("scoring").addEventListener("click", nextPage, () => { goPage("scoring"); saveToLocalStorage(); })
+document.getElementById("scoring").addEventListener("click", () => { goPage("scoring"); saveToLocalStorage(); })
 document.getElementById("back").addEventListener("click", () => { goPage("postmatch") })
 const cube = document.getElementById("cube");
 
@@ -25,19 +25,11 @@ cube.addEventListener("click", () => {
 function nextPage() {
     saveToLocalStorage();
     if (formIsValid()) {
-        goPage("teleop")
+        goPage("scoring")
     }
 }
 
 function formIsValid() {
-    // if (window.localStorage.getItem("drivetrains") == null) {
-    //     alert("bro fix that goofy ahh drivetrain answer")
-    //     return false;
-    // }
-    // if (window.localStorage.getItem("fast") == null) {
-    //     alert("please fix speed input or answer")
-    //     return false;
-    // }
     return true;
 }
 

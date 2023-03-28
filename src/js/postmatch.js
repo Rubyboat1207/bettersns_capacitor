@@ -53,7 +53,7 @@ addEventListener('load', () => {
     });
     document.getElementById("robot").addEventListener("click", () => {
         saveToLocalStorage();
-        // goPage("robot");
+        goPage("robot");
     });
     document.getElementById("back").addEventListener("click", () => {
         saveToLocalStorage("postmatch")

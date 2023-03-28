@@ -271,7 +271,7 @@ export async function submitReport(reporter, contact, msg) {
       headers: {
           "Content-Type": "application/json",
       },
-    });
+    });  
     return true;
   }catch {
     return false;

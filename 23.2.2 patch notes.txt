@@ -1,0 +1,7 @@
+- Version Changed to 23.2.2
+- Save and upload button removed for clarity
+- Fixed a very minor bug in auton
+- Robot attributes page is now accsessable
+- Robot attributes now leads to scoring page instead of teleop (thanks natalie! do you ever test you code???)
+- Added confetti when save button clicked
+- Added confetti after save button clicked elsewhere on screen, in team colors

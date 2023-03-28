@@ -23,6 +23,7 @@
     "@capacitor/network": "^4.1.0",
     "@capacitor/splash-screen": "latest",
     "axios": "^1.2.2",
+    "canvas-confetti": "^1.6.0",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "csv": "^6.2.7",
     "es6-promise-plugin": "^4.2.2"

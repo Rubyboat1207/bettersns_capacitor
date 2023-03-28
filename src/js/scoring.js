@@ -1,5 +1,6 @@
 import { goPage, clearData } from "./script";
 import { saveReqToLocal, uploadAllData, uploadData, writeDataToFile } from "./api"
+import confetti from 'canvas-confetti';
 
 function validate() {
   if(isNaN(document.getElementById('points').value) || document.getElementById('points').value == '') {
@@ -15,25 +16,58 @@ function validate() {
 }
 
 addEventListener("load", () => {
-    document.getElementById("upload").addEventListener("click", () => {
-      saveToLocalStorage();
-      saveReqToLocal();
-      // writeDataToFile();
-      clearData();
-      uploadAllData();
-      goPage("index");
-    });
+    // document.getElementById("upload").addEventListener("click", () => {
+    //   saveToLocalStorage();
+    //   saveReqToLocal();
+    //   // writeDataToFile();
+    //   clearData();
+    //   uploadAllData();
+    //   goPage("index");
+    // });
 
-    document.getElementById("save").addEventListener("click", () => {
+    document.addEventListener('click', (e) => {
+      if(!currentlyConfetti) {
+        return;
+      }
+      confetti({
+        particleCount: 50,
+        spread: 360,
+        origin: { y: e.clientY / 1280, x: e.clientX / 800 },
+        startVelocity: 20,
+        colors: [
+          'CD3636',
+          '3673CD'
+        ]
+      });
+
+    })
+
+    document.getElementById("save").addEventListener("click", (e) => {
+      
+      if(currentlyConfetti) {
+        return;
+      }
       if(!validate()) {
         alert('all points fields must be filled out, and must be numerical.')
         return;
       }
-      saveToLocalStorage();
-      saveReqToLocal();
-      // writeDataToFile();
-      clearData();
-      goPage("index");
+      
+      
+
+      currentlyConfetti = true;
+      setTimeout(() => {
+        saveToLocalStorage();
+        saveReqToLocal();
+
+        clearData();
+        goPage("index");
+      }, 2000)
+      confetti({
+        particleCount: 100,
+        spread: 360,
+        origin: { y: e.clientY / 1280, x: e.clientX / 800 },
+        startVelocity: 80
+      });
     });
 })
 
@@ -99,10 +133,28 @@ function formIsValid() {
   }
   return true;
 }
+
+let currentlyConfetti = false;
+
 function nextPage() {
+  if(currentlyConfetti) {
+    return;
+  }
+
   if (formIsValid()) {
-    saveToLocalStorage();
-    goPage("teleop")
+    const canvas = document.getElementById('confetti-canvas');
+    const confettiSettings = { 
+      particleCount: 100, 
+      spread: 70, 
+      origin: { y: 0.6 }
+    };
+    confetti(canvas, confettiSettings);
+    currentlyConfetti = true;
+    setTimeout(() => {
+      saveToLocalStorage();
+      // goPage("teleop")
+    }, 10000)
+    
   }
 }
 
@@ -111,7 +163,7 @@ addEventListener("load", function () {
     clearData();
     goPage("index");
   });
-  document.getElementById("back").addEventListener("click", nextPage, () => {
+  document.getElementById("back").addEventListener("click", () => {
     saveToLocalStorage();
     goPage("robot");
   });

@@ -1,6 +1,6 @@
 import { goPage } from "./script.js"
 import { saveToLocalStorage, loadFromLocalStorage, setCallback } from "./field.js"
-
+let isTimerSet = false;
 
 function formIsValid() {
     if (window.localStorage.getItem("attemptedPlace") == null || !Boolean) {
