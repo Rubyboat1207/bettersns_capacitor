@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import fs from 'fs';
 import { resolve } from 'path'
+import csp from 'vite-plugin-csp';
 
 function getconfig() {
   const config = {
@@ -24,6 +25,17 @@ function getconfig() {
         },
       },
     },
+    plugins: [
+      csp({
+        policy: {
+          "default-src": ["self", "unsafe-eval"],
+          "script-src": ["self", "unsafe-eval", "unsafe-inline", "blob:"],
+          "style-src": ["self", "unsafe-inline"],
+          "img-src": ["self"],
+          "font-src": ["self", "data:"],
+        },
+      }),
+    ],
   };
   return config;
 }
