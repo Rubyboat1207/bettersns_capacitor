@@ -1,4 +1,10 @@
 export const base_url = 'http://nebulouscereal.com:1337/api/v1/' // Yes, I know
 export const version = "23.2.2";
+export const emojis = "🍕 😁 😎 😍 🤩 😥 😮 🤑 😜 😈 🤓 🤠 🤖 👀 🎞 🧨 🏀 🌮 🍙 🌵 🛹 🦼".split(' ');
 export const game = "Charged Up";
-export const testUpload = false
+export const testUpload = false;
+export const funny = true;
+export const redColor = 'CD3636';
+export const blueColor = '3673CD';
+export const coneColor = 'FFC531';
+export const cubeColor = 'B949ED'

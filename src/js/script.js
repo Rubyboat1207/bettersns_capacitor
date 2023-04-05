@@ -2,12 +2,33 @@
 // apolgies for anyone who has to read this, not my best work.
 // rewriting this in react would be a good idea, but I don't have the time
 
-import { game, version } from "./constants";
+import { emojis, funny, game, version } from "./constants";
+import confetti from "canvas-confetti";
 
 // lets keep the fact that this is a mess a secret, it looks nice from the outside
 
 let red;
 let blue;
+
+export const createConfetti = (colors) => {
+    confetti({
+        particleCount: 50,
+        spread: 360,
+        origin: { y: 0.5, x: 0.5 },
+        startVelocity: 20,
+        colors: colors
+    })
+}
+
+export const createConfettiAtClick = (e, colors) => {
+    confetti({
+        particleCount: 50,
+        spread: 360,
+        origin: { y: e.clientY / 1280, x: e.clientX / 800 },
+        startVelocity: 20,
+        colors: colors
+    })
+}
 
 // This is a list of all the pages, and their orientation
 // This is used to lock the screen orientation to the correct orientation
@@ -150,7 +171,7 @@ addEventListener("load", () => {
 
     //version number, current game
     if(document.getElementById("version")) {
-        document.getElementById("version").innerHTML = version + ' ' + game;
+        document.getElementById("version").innerHTML = version + ' ' + game + (funny &&  (' ' + emojis[Math.ceil(Math.random() * (emojis.length - 1))]));
     }
 
     const display = document.getElementById("alliance-display");

@@ -1,10 +1,13 @@
-import { goPage } from "./script";
+import { createConfetti, createConfettiAtClick, goPage } from "./script";
 import dcone from '../assets/imgs/cone.svg';
 import dcone_selected from '../assets/imgs/cone_selected.svg';
 import dcube from '../assets/imgs/cube.svg';
 import dcube_selected from '../assets/imgs/cube_selected.svg';
+import confetti from "canvas-confetti";
+import { blueColor, coneColor, cubeColor, funny, redColor } from "./constants";
 
 let scouter, team, teamNumber, match, preload, noShow, cone, cube, startingPos;
+let clickcount = 0
 addEventListener("load", () => {
     scouter = document.getElementById("scouter");
     team = document.getElementById("teamName");
@@ -33,6 +36,16 @@ addEventListener("load", () => {
         goPage("index");
     });
     loadFromLocalStorage();
+    if(funny) {
+        document.getElementById('title').addEventListener('click', (e) => {
+            clickcount += 1;
+            console.log(clickcount)
+            if(clickcount > 20) {
+                createConfetti([redColor, blueColor])
+                clickcount = 0;
+            }
+        }) 
+    }
 });
 
 function formIsValid() {
@@ -75,7 +88,10 @@ function loadFromLocalStorage() {
     preload.setAttribute("select-value", window.localStorage.getItem("preload"));
     cone.setAttribute("src", preload.getAttribute("select-value") == "cone" ? dcone_selected : dcone);
     cube.setAttribute("src", preload.getAttribute("select-value") == "cube" ? dcube_selected : dcube);
-    
+    if(funny) {
+        cone.addEventListener('click', (e) => {createConfettiAtClick(e, [coneColor])})
+        cube.addEventListener('click', (e) => {createConfettiAtClick(e, [cubeColor])})
+    }
 }
 
 function nextPage() {

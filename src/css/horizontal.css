@@ -25,3 +25,13 @@
 .notes.hidden {
     left: -89vw;
 }
+
+#spinner {
+    position: absolute;
+    top: -100%;
+}
+
+#spinner.visible {
+    top: 60px;
+    left: 24%;
+}

@@ -1,6 +1,7 @@
 import { goPage, clearData } from "./script";
 import { saveReqToLocal, uploadAllData, uploadData, writeDataToFile } from "./api"
 import confetti from 'canvas-confetti';
+import { funny } from "./constants";
 
 function validate() {
   if(isNaN(document.getElementById('points').value) || document.getElementById('points').value == '') {
@@ -62,6 +63,12 @@ addEventListener("load", () => {
         clearData();
         goPage("index");
       }, 2000)
+      if(funny) {
+        if(Math.round(Math.random() * 100) == 69) {
+          document.getElementById('jumpscare').classList.remove('hidden')
+          setTimeout(() => {document.getElementById('jumpscare').classList.add('hidden')}, 500)
+        }
+      }
       confetti({
         particleCount: 100,
         spread: 360,
